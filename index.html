@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KT Nasmedia with Pinball</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:  #FF2D9B;
+      --red:   #E8230A;
+      --blue:  #1A47C8;
+      --navy:  #0D1833;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      background: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--black);
+    }
+    body { padding-top: 68px; }
+
+    /* ─── BLOBS ─────────────────────────────────────────────── */
+    .blob-left {
+      position: absolute;
+      left: -120px; bottom: -80px;
+      width: 480px; height: 480px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-right {
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 520px; height: 480px;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse 55% 60% at 70% 30%, #1A47C8 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 55% at 85% 60%, #E8230A 0%, transparent 55%),
+                  radial-gradient(ellipse 60% 50% at 50% 75%, #FF2D9B 0%, transparent 55%);
+      filter: blur(32px);
+      opacity: 0.72;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .logo-mark {
+      display: flex; align-items: center; gap: 0;
+    }
+
+    .logo-img-nasmedia {
+      height: 28px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .logo-divider {
+      width: 1px;
+      height: 28px;
+      background: #D0D0D0;
+      margin: 0 20px;
+      flex-shrink: 0;
+    }
+
+    .logo-img-pinball {
+      height: 28px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex; gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--black);
+      transition: opacity .2s;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: opacity .2s, border-color .2s;
+    }
+    .nav-links a:hover { opacity: .5; }
+    .nav-links a.active { opacity: 1; border-bottom: 2px solid var(--black); }
+
+    .logo-mark { cursor: pointer; }
+
+    .nav-cta {
+      background: var(--black);
+      color: var(--white) !important;
+      padding: 14px 28px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .8; }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 68px);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-center {
+      position: relative; z-index: 10;
+      text-align: center;
+      max-width: 720px;
+      padding: 60px 24px;
+      animation: fadeUp .8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 900;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.65;
+      margin-bottom: 44px;
+      max-width: 440px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    .btn-download {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      padding: 18px 48px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-download::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,.08);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.22); }
+    .btn-download:hover::after { opacity: 1; }
+    .btn-download:active { transform: translateY(0); }
+
+    /* ─── SVG BLOB LEFT ──────────────────────────────────────── */
+    .blob-left svg {
+      width: 100%; height: 100%;
+    }
+
+    /* ─── BLOB ANIMATION ─────────────────────────────────────── */
+    .blob-left {
+      transform-origin: center bottom;
+      animation: blobPulse 6s ease-in-out infinite alternate;
+    }
+    .blob-right {
+      animation: blobDrift 8s ease-in-out infinite alternate;
+    }
+    @keyframes blobPulse {
+      0%   { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.07) rotate(4deg); }
+    }
+    @keyframes blobDrift {
+      0%   { transform: scale(1) translateY(0); opacity: .72; }
+      100% { transform: scale(1.05) translateY(-20px); opacity: .85; }
+    }
+
+    /* ─── CIRCLE INDIVIDUAL ANIMATIONS ───────────────────────── */
+    .blob-left .circle-pink {
+      transform-origin: 200px 200px;
+      animation: circlePink 5s ease-in-out infinite alternate;
+    }
+    .blob-left .circle-red {
+      transform-origin: 160px 360px;
+      animation: circleRed 7s ease-in-out infinite alternate;
+    }
+    .blob-left .circle-blue {
+      transform-origin: 310px 390px;
+      animation: circleBlue 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes circlePink {
+      0%   { transform: translate(0px,   0px)  scale(1);    }
+      33%  { transform: translate(18px,  14px) scale(1.06); }
+      66%  { transform: translate(-10px, 10px) scale(0.96); }
+      100% { transform: translate(12px,  16px) scale(1.04); }
+    }
+    @keyframes circleRed {
+      0%   { transform: translate(0px,   0px)  scale(1);    }
+      40%  { transform: translate(-20px, 16px) scale(1.08); }
+      70%  { transform: translate(14px, -10px) scale(0.95); }
+      100% { transform: translate(-8px,  20px) scale(1.05); }
+    }
+    @keyframes circleBlue {
+      0%   { transform: translate(0px,  0px)  scale(1);    }
+      30%  { transform: translate(16px, 18px) scale(1.07); }
+      65%  { transform: translate(-18px, -12px) scale(0.97); }
+      100% { transform: translate(10px,  14px) scale(1.04); }
+    }
+
+    /* ─── CREATORS SECTION (non-overlay) ───────────────────── */
+    #section-creators {
+      display: none;
+      flex-direction: column;
+      min-height: calc(100vh - 68px);
+      background: var(--white);
+      animation: fadeUp .4s ease both;
+    }
+    #section-creators.active { display: flex; }
+
+    /* ─── CREATORS PAGE ──────────────────────────────────────── */
+    #creators-filter {
+      padding: 20px 48px;
+      border-bottom: 1px solid #ebebeb;
+      display: flex; gap: 10px; flex-wrap: wrap;
+      background: #fff;
+      position: sticky; top: 0; z-index: 10;
+      flex-shrink: 0;
+    }
+    .filter-btn {
+      background: #f6f6f6;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.2px;
+      cursor: pointer; color: #555;
+      transition: all .22s;
+    }
+    .filter-btn:hover {
+      background: #ebebeb;
+      color: #111;
+    }
+    .filter-btn.active {
+      background: var(--black);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    }
+
+    #creators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+      padding: 44px 48px;
+      overflow-y: auto;
+      flex: 1;
+      align-content: start;
+    }
+    .creator-card {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      text-decoration: none; color: inherit;
+      padding: 36px 20px 28px;
+      border: 1.5px solid #eee;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      cursor: pointer;
+    }
+    .creator-card:hover {
+      border-color: var(--black);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.09);
+    }
+    .creator-img-wrap {
+      position: relative; width: 150px; height: 150px;
+      margin-bottom: 18px; flex-shrink: 0;
+      border-radius: 50%;
+    }
+    .creator-img-wrap img {
+      width: 150px; height: 150px;
+      border-radius: 50%; object-fit: cover;
+      position: absolute; top: 0; left: 0;
+      display: block;
+    }
+    .creator-initial {
+      width: 150px; height: 150px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Figtree', sans-serif; font-weight: 900;
+      font-size: 52px; color: white;
+    }
+    .creator-name {
+      font-family: 'Figtree', sans-serif; font-weight: 800;
+      font-size: 15px; color: var(--black);
+      line-height: 1.35; margin-bottom: 8px;
+    }
+    .creator-subs {
+      font-size: 13px; font-weight: 600; color: #999;
+      margin-bottom: 14px; letter-spacing: 0.2px;
+    }
+    .creator-tags { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+    .creator-tags span {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; background: #f2f2f2; color: #666;
+      padding: 4px 9px; border-radius: 4px;
+    }
+
+    /* ─── TOAST ──────────────────────────────────────────────── */
+    #toast {
+      position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--black); color: var(--white);
+      padding: 14px 28px;
+      font-family: 'Figtree', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: .4px;
+      opacity: 0; transition: opacity .3s, transform .3s;
+      pointer-events: none; z-index: 999;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="logo-mark" onclick="showHome()">
+    <img src="./KT_nasmedia.png" alt="KT Nasmedia" class="logo-img-nasmedia" />
+    <div class="logo-divider"></div>
+    <img src="./Pinball.png" alt="Pinball" class="logo-img-pinball" />
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#" onclick="showHome();return false;">About</a></li>
+    <li><a href="#" onclick="showHome();return false;">Ecosystem</a></li>
+    <li><a href="#" onclick="showHome();return false;">Product</a></li>
+    <li><a href="#" id="nav-creators" onclick="showCreators();return false;">Creators</a></li>
+  </ul>
+
+  <a href="#" class="nav-cta" onclick="openPage('explore');return false;">Explore Common</a>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- Left blobs -->
+  <div class="blob-left">
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+      <!-- Pink large circle -->
+      <circle class="circle-pink" cx="200" cy="200" r="200" fill="#FF2D9B" opacity="0.95"/>
+      <!-- Red circle -->
+      <circle class="circle-red" cx="160" cy="360" r="130" fill="#E8230A" opacity="0.97"/>
+      <!-- Blue circle -->
+      <circle class="circle-blue" cx="310" cy="390" r="110" fill="#1A47C8" opacity="0.97"/>
+    </svg>
+  </div>
+
+  <!-- Right gradient blob -->
+  <div class="blob-right"></div>
+
+  <!-- Center content -->
+  <div class="hero-center">
+    <h1 class="hero-title">Creator Partnership<br>Boost Ads</h1>
+    <p class="hero-sub">An all-in-one space with transparent rewards, roles,<br>and discussion for any community.</p>
+    <button class="btn-download" onclick="handleDownload()">Download Document</button>
+  </div>
+</section>
+
+<!-- ─── CREATORS SECTION ──────────────────────────────────────── -->
+<section id="section-creators">
+  <div id="creators-filter">
+    <button class="filter-btn active" data-cat="all" onclick="filterCreators(this,'all')">전체</button>
+    <button class="filter-btn" data-cat="엔터테인먼트" onclick="filterCreators(this,'엔터테인먼트')">엔터테인먼트</button>
+    <button class="filter-btn" data-cat="게임/애니" onclick="filterCreators(this,'게임/애니')">게임 / 애니</button>
+    <button class="filter-btn" data-cat="뷰티/라이프" onclick="filterCreators(this,'뷰티/라이프')">뷰티 / 라이프</button>
+    <button class="filter-btn" data-cat="피트니스" onclick="filterCreators(this,'피트니스')">피트니스</button>
+    <button class="filter-btn" data-cat="미디어/테크" onclick="filterCreators(this,'미디어/테크')">미디어 / 테크</button>
+  </div>
+  <div id="creators-grid"></div>
+</section>
+
+<!-- ─── TOAST ─────────────────────────────────────────────────── -->
+<div id="toast">문서를 준비 중입니다. 파일을 연결해 주세요.</div>
+
+<script>
+  /* ── Page routing ── */
+  const hero     = document.querySelector('.hero');
+  const secCreators = document.getElementById('section-creators');
+  const navCreators = document.getElementById('nav-creators');
+
+  function showCreators() {
+    hero.style.display = 'none';
+    secCreators.classList.add('active');
+    navCreators.classList.add('active');
+    renderCreators('all');
+    // reset filter tabs
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+  }
+
+  function showHome() {
+    secCreators.classList.remove('active');
+    navCreators.classList.remove('active');
+    hero.style.display = '';
+  }
+
+  /* ── Creator Data ── */
+  const creatorsData = [
+    { name: 'BeatboxJCOP',       ytUrl: 'https://www.youtube.com/@BeatboxJCOP',                                  subs: '4,960만', img: 'BeatboxJCOP',          cat: '엔터테인먼트', tags: ['엔터테인먼트','글로벌','뮤직'] },
+    { name: '크레이지 그래빠',   ytUrl: 'https://www.youtube.com/channel/UCNQAoLEv87L7NgUp4We3HIg',              subs: '2,890만', img: 'UCNQAoLEv87L7NgUp4We3HIg', cat: '엔터테인먼트', tags: ['엔터테인먼트','글로벌'] },
+    { name: "GH'S",              ytUrl: 'http://www.youtube.com/@GH.S',                                          subs: '2,730만', img: 'GH.S',                  cat: '게임/애니',    tags: ['게임','애니메이션'] },
+    { name: '병아리언니 Byungari',ytUrl: 'https://www.youtube.com/channel/UC8TCA15kPzNw9ppRaVZ937w',             subs: '1,340만', img: 'UC8TCA15kPzNw9ppRaVZ937w', cat: '엔터테인먼트', tags: ['엔터테인먼트','글로벌'] },
+    { name: 'waveya2011',        ytUrl: 'https://www.youtube.com/@waveya2011',                                   subs: '366만',   img: 'waveya2011',            cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+    { name: '1분요리 뚝딱이형',   ytUrl: 'https://www.youtube.com/@1mincook',                                    subs: '305만',   img: '1mincook',              cat: '뷰티/라이프',  tags: ['라이프스타일','푸드'] },
+    { name: '캐릭온 TV',          ytUrl: 'https://www.youtube.com/@CharaOn',                                     subs: '251만',   img: 'CharaOn',               cat: '게임/애니',    tags: ['게임','애니메이션'] },
+    { name: '펑커슨',             ytUrl: 'https://www.youtube.com/@Jeny_Punker',                                 subs: '243만',   img: 'Jeny_Punker',           cat: '게임/애니',    tags: ['게임','애니메이션','글로벌'] },
+    { name: '동네놈들',           ytUrl: 'https://www.youtube.com/%EB%8F%99%EB%84%A4%EB%86%88%EB%93%A4',        subs: '161만',   img: null,                    cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+    { name: 'Edward Avila',      ytUrl: 'https://www.youtube.com/@Edward_Avila',                                 subs: '153만',   img: 'Edward_Avila',          cat: '뷰티/라이프',  tags: ['뷰티','라이프스타일','패션','글로벌'] },
+    { name: '고성국TV',           ytUrl: 'https://www.youtube.com/@%EA%B3%A0%EC%84%B1%EA%B5%ADTV',              subs: '133만',   img: null,                    cat: '미디어/테크',  tags: ['미디어'] },
+    { name: '비타민신지니',       ytUrl: 'https://www.youtube.com/@vitaminjiny',                                 subs: '130만',   img: 'vitaminjiny',           cat: '피트니스',     tags: ['피트니스'] },
+    { name: 'BeBell',            ytUrl: 'https://www.youtube.com/@BeBell',                                       subs: '110만',   img: 'BeBell',                cat: '뷰티/라이프',  tags: ['뷰티','라이프스타일','패션','글로벌'] },
+    { name: 'BIGSIS 빅씨스',      ytUrl: 'https://www.youtube.com/@BIGSIS',                                     subs: '106만',   img: 'BIGSIS',                cat: '피트니스',     tags: ['피트니스','뷰티','라이프스타일'] },
+    { name: 'Reyong ASMR',       ytUrl: 'https://www.youtube.com/@reyongasmr',                                   subs: '101만',   img: 'reyongasmr',            cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+    { name: '책읽기 좋은날',      ytUrl: 'https://www.youtube.com/@ReadingGoodday',                              subs: '98만',    img: 'ReadingGoodday',        cat: '엔터테인먼트', tags: ['오디오','엔터테인먼트'] },
+    { name: 'afit 에이핏',        ytUrl: 'https://www.youtube.com/@afit_',                                      subs: '86.7만',  img: 'afit_',                 cat: '피트니스',     tags: ['피트니스'] },
+    { name: '한식푸우',           ytUrl: 'https://www.youtube.com/@koreanfood99',                                subs: '76.9만',  img: 'koreanfood99',          cat: '뷰티/라이프',  tags: ['라이프스타일','먹방'] },
+    { name: 'TIMT',              ytUrl: 'https://www.youtube.com/@timt_official',                                subs: '76.7만',  img: 'timt_official',         cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+    { name: '혀누',               ytUrl: 'https://www.youtube.com/@%ED%98%80%EB%88%84HyuNoo',                   subs: '75만',    img: null,                    cat: '게임/애니',    tags: ['애니메이션'] },
+    { name: 'DK YOO',            ytUrl: 'https://www.youtube.com/@DKYOO',                                       subs: '66.8만',  img: 'DKYOO',                 cat: '피트니스',     tags: ['피트니스','엔터테인먼트'] },
+    { name: '오라잇 스튜디오',    ytUrl: 'https://www.youtube.com/@AIT',                                        subs: '63.5만',  img: 'AIT',                   cat: '미디어/테크',  tags: ['테크'] },
+    { name: 'YooTrue 유트루',     ytUrl: 'https://www.youtube.com/@yootrue',                                    subs: '59.8만',  img: 'yootrue',               cat: '뷰티/라이프',  tags: ['뷰티','라이프스타일'] },
+    { name: 'Kelly Kim',         ytUrl: 'https://www.youtube.com/@KellyyoujinKim',                               subs: '52.4만',  img: 'KellyyoujinKim',        cat: '뷰티/라이프',  tags: ['라이프스타일','뷰티','패션','글로벌'] },
+    { name: '만취한 오박사',      ytUrl: 'https://www.youtube.com/@DrunkOakPokemon',                             subs: '48.7만',  img: 'DrunkOakPokemon',       cat: '게임/애니',    tags: ['게임','애니메이션'] },
+  ];
+
+  const PALETTE = ['#FF2D9B','#E8230A','#1A47C8','#F59E0B','#10B981','#8B5CF6','#0891B2'];
+
+  function getInitialColor(name) {
+    return PALETTE[name.charCodeAt(0) % PALETTE.length];
+  }
+
+  function renderCreators(activeCat) {
+    const grid = document.getElementById('creators-grid');
+    const list = activeCat === 'all' ? creatorsData : creatorsData.filter(c => c.cat === activeCat);
+
+    grid.innerHTML = list.map(c => {
+      const avatarUrl = c.img ? `https://unavatar.io/youtube/${c.img}` : null;
+      const color = getInitialColor(c.name);
+      const initial = c.name[0];
+
+      return `
+        <a href="${c.ytUrl}" target="_blank" rel="noopener" class="creator-card">
+          <div class="creator-img-wrap">
+            ${avatarUrl ? `<img src="${avatarUrl}" alt="${c.name}" loading="lazy" onerror="this.style.opacity=0">` : ''}
+            <div class="creator-initial" style="background:${color}">${initial}</div>
+          </div>
+          <div class="creator-name">${c.name}</div>
+          <div class="creator-subs">${c.subs} 구독자</div>
+          <div class="creator-tags">${c.tags.slice(0,2).map(t=>`<span>${t}</span>`).join('')}</div>
+        </a>`;
+    }).join('');
+  }
+
+  function filterCreators(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCreators(cat);
+  }
+
+  /* ── Download handler ── */
+  const DOCUMENT_URL = '';
+  function handleDownload() {
+    if (!DOCUMENT_URL) { showToast('문서 파일을 DOCUMENT_URL 변수에 연결해 주세요.'); return; }
+    const a = document.createElement('a');
+    a.href = DOCUMENT_URL; a.download = DOCUMENT_URL.split('/').pop();
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+</script>
+</body>
+</html>
