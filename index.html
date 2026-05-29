@@ -1074,6 +1074,318 @@
       max-width: 900px;
     }
 
+    /* ─── CASE STUDY SECTION ────────────────────────────────── */
+    #section-contact {
+      min-height: calc(100vh - 68px);
+      background: #fff;
+      display: none;
+      align-items: stretch;
+    }
+    #section-contact.active { display: flex; }
+
+    .cs-wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 64px 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* 헤더 */
+    .cs-header {
+      margin-bottom: 36px;
+    }
+    .cs-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .cs-main-title {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(24px, 2.8vw, 38px);
+      font-weight: 900;
+      color: var(--black);
+      letter-spacing: -0.8px;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .cs-sub-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(13px, 1.1vw, 15px);
+      color: #666;
+      line-height: 1.7;
+    }
+    .cs-sub-title strong {
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    /* 상단: 영상 + 설명 나란히 */
+    .cs-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+
+    /* 영상 */
+    .cs-video-thumb {
+      position: relative;
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #111;
+      text-decoration: none;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.14);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .cs-video-thumb:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.18);
+    }
+    .cs-video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+      transition: opacity .22s;
+    }
+    .cs-video-thumb:hover img { opacity: 1; }
+    .cs-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -58%);
+      width: 60px;
+      height: 60px;
+      background: #FF0000;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(255,0,0,0.5);
+      transition: transform .18s;
+    }
+    .cs-video-thumb:hover .cs-play-btn {
+      transform: translate(-50%, -58%) scale(1.08);
+    }
+    .cs-video-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.72));
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 22px 16px 12px;
+    }
+
+    /* 우측 캠페인 설명 */
+    .cs-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .cs-brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-brand-logo {
+      font-family: 'Figtree', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: var(--black);
+      text-transform: uppercase;
+      border-bottom: 3px solid var(--black);
+      padding-bottom: 2px;
+    }
+    .cs-brand-sep {
+      width: 1px;
+      height: 20px;
+      background: #ddd;
+    }
+    .cs-brand-product {
+      font-family: 'Figtree', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--black);
+    }
+    .cs-brand-sub {
+      font-size: 14px;
+      font-weight: 500;
+      color: #888;
+    }
+    .cs-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(14px, 1.2vw, 16px);
+      line-height: 1.85;
+      color: #444;
+    }
+    .cs-desc strong {
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    /* 하단 KPI */
+    .cs-kpi-section {}
+    .cs-kpi-divider {
+      height: 1px;
+      background: #ebebeb;
+      margin-bottom: 28px;
+    }
+
+    /* 좌/우 2열 구조 */
+    .cs-kpi-columns {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 40px;
+      align-items: start;
+    }
+    .cs-kpi-vsep {
+      width: 1px;
+      background: #e8e8e8;
+      align-self: stretch;
+    }
+    .cs-kpi-col {}
+    .cs-kpi-col-title {
+      font-family: 'Figtree', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+    .cs-kpi-col-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .cs-kpi-item {
+      padding-right: 20px;
+    }
+    .cs-kpi-item:last-child { padding-right: 0; }
+    .cs-kpi-metric {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+    .cs-kpi-sub {
+      font-size: 10px;
+      font-weight: 400;
+      color: #ccc;
+    }
+    .cs-kpi-value {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(30px, 3.2vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    .cs-kpi-pos { color: var(--blue) !important; }
+    .cs-kpi-neg { color: var(--red) !important; }
+    .cs-kpi-neutral { color: var(--black) !important; }
+    .cs-kpi-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    /* 광고주/크리에이터 메타 */
+    .cs-meta-table {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #ebebeb;
+    }
+    .cs-meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .cs-meta-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+      min-width: 72px;
+      flex-shrink: 0;
+    }
+    .cs-meta-value {
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+    }
+    .cs-meta-value strong {
+      color: var(--black);
+      font-weight: 800;
+    }
+
+    /* KPI 한 줄 */
+    .cs-kpi-row-full {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .cs-kpi-row-full .cs-kpi-item {
+      flex: 1;
+      padding: 0 24px 0 0;
+      border-right: 1px solid #ebebeb;
+      margin-right: 24px;
+    }
+    .cs-kpi-row-full .cs-kpi-item:last-child {
+      border-right: none;
+      padding-right: 0;
+      margin-right: 0;
+    }
+
+    /* Brand Lift | Media Performance 구분 */
+    .cs-kpi-group-sep {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 0 20px;
+      flex-shrink: 0;
+    }
+    .cs-kpi-group-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ccc;
+      white-space: nowrap;
+    }
+    .cs-kpi-group-line {
+      flex: 1;
+      width: 1px;
+      background: #e0e0e0;
+      min-height: 40px;
+    }
+
     /* ─── TOAST ──────────────────────────────────────────────── */
     #toast {
       position: fixed;
@@ -1299,7 +1611,7 @@
       <li><a href="#" id="nav-roles" onclick="showSection('roles');return false;">Roles</a></li>
       <li><a href="#" id="nav-process" onclick="showSection('process');return false;">Process</a></li>
       <li><a href="#" id="nav-creators" onclick="showSection('creators');return false;">Creators</a></li>
-      <li><a href="#" id="nav-contact" onclick="showSection('contact');return false;">Contact</a></li>
+      <li><a href="#" id="nav-contact" onclick="showSection('contact');return false;">Case Study</a></li>
     </ul>
 
     <a href="#" class="nav-cta" onclick="handleDownload();return false;">Download Doc</a>
@@ -1600,13 +1912,97 @@
     <div id="creators-grid"></div>
   </section>
 
-  <!-- ─── CONTACT SECTION ──────────────────────────────────────────── -->
+  <!-- ─── CASE STUDY SECTION ──────────────────────────────────────────── -->
   <section id="section-contact" class="page-section">
-    <div class="placeholder-wrap">
-      <p class="placeholder-eyebrow">CONTACT</p>
-      <h2 class="placeholder-title">Coming Soon</h2>
-      <p class="placeholder-desc">문의 양식 콘텐츠가 준비 중입니다.</p>
-    </div>
+    <div class="cs-wrap">
+
+      <!-- 헤더 -->
+      <div class="cs-header">
+        <p class="cs-eyebrow">CASE STUDY</p>
+        <h1 class="cs-main-title">크리에이터 콘텐츠 ▶ 파트너십 광고 사례</h1>
+        <p class="cs-sub-title">YouTube 크리에이터와의 협업 컨텐츠에 Creator Boost 기능을 더해<br>브랜드 리프트, 검색 상승도, 세일즈 및 Media ROI를 향상시킨 <strong>센소다인</strong></p>
+      </div>
+
+      <!-- 상단: 영상 + 캠페인 설명 -->
+      <div class="cs-top">
+
+        <!-- 영상 -->
+        <a class="cs-video-thumb" href="https://www.youtube.com/watch?v=pvPQF66OvY0" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/pvPQF66OvY0/maxresdefault.jpg" alt="센소다인 × 조승연의 탐구생활 협업 영상" onerror="this.src='https://img.youtube.com/vi/pvPQF66OvY0/hqdefault.jpg'">
+          <div class="cs-play-btn">
+            <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="cs-video-label">조승연의 탐구생활 · 협업 영상 보기 ↗</div>
+        </a>
+
+        <!-- 캠페인 설명 -->
+        <div class="cs-info">
+          <div class="cs-brand-row">
+            <div class="cs-brand-logo">HALEON</div>
+            <div class="cs-brand-sep"></div>
+            <div class="cs-brand-product">센소다인 <span class="cs-brand-sub">(Sensodyne)</span></div>
+          </div>
+          <p class="cs-desc">헤일리온의 센소다인 브랜드는 시린 증상 예방 및 완화 전문 치약으로서, 조승연의 탐구생활 채널과의 협업 캠페인을 통해 구매 고려도 강화와 실제 제품 구매(네이버 스마트스토어)를 목표했습니다. 캠페인 결과, 구매 고려도 강화는 물론 브랜드 선호도 면에서 모두 <strong>산업 중간값 대비 우수한 성과</strong>를 기록하며 성공적으로 기획 물량을 완판할 수 있었습니다.</p>
+        </div>
+
+      </div><!-- /cs-top -->
+
+      <!-- 하단: 광고 효과 KPI — 좌(Brand Lift) / 우(Media Performance) -->
+      <div class="cs-kpi-section">
+        <div class="cs-kpi-divider"></div>
+        <div class="cs-kpi-columns">
+
+          <!-- 좌: Brand Lift -->
+          <div class="cs-kpi-col">
+            <p class="cs-kpi-col-title">BRAND LIFT</p>
+            <div class="cs-kpi-col-items">
+              <div class="cs-kpi-item">
+                <div class="cs-kpi-metric">브랜드 리프트</div>
+                <div class="cs-kpi-value cs-kpi-pos">+8%</div>
+                <div class="cs-kpi-note">구매고려도 (상대적 리프트)</div>
+              </div>
+              <div class="cs-kpi-item">
+                <div class="cs-kpi-metric">브랜드 리프트</div>
+                <div class="cs-kpi-value cs-kpi-pos">+5.7%</div>
+                <div class="cs-kpi-note">호감도 (상대적 리프트)</div>
+              </div>
+              <div class="cs-kpi-item">
+                <div class="cs-kpi-metric">검색 리프트</div>
+                <div class="cs-kpi-value cs-kpi-neutral">95%</div>
+                <div class="cs-kpi-note">브랜드 키워드</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 세로 구분선 -->
+          <div class="cs-kpi-vsep"></div>
+
+          <!-- 우: Media Performance -->
+          <div class="cs-kpi-col">
+            <p class="cs-kpi-col-title">MEDIA PERFORMANCE</p>
+            <div class="cs-kpi-col-items">
+              <div class="cs-kpi-item">
+                <div class="cs-kpi-metric">CPC <span class="cs-kpi-sub">(Demand GEN)</span></div>
+                <div class="cs-kpi-value cs-kpi-neg">−19%</div>
+                <div class="cs-kpi-note">동기간 브랜드 필름 소재로 운영한<br>디맨드젠 캠페인 대비</div>
+              </div>
+              <div class="cs-kpi-item">
+                <div class="cs-kpi-metric">CTR <span class="cs-kpi-sub">(Demand GEN)</span></div>
+                <div class="cs-kpi-value cs-kpi-pos">+30%</div>
+                <div class="cs-kpi-note">크리에이터 콘텐츠 조회자 기반 오디언스<br>vs 기존 오디언스 타겟팅</div>
+              </div>
+              <div class="cs-kpi-item">
+                <div class="cs-kpi-metric">CPV</div>
+                <div class="cs-kpi-value cs-kpi-neg">−94%</div>
+                <div class="cs-kpi-note">오가닉 콘텐츠만 운영 대비</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /cs-kpi-section -->
+
+    </div><!-- /cs-wrap -->
   </section>
 
   <!-- ─── TOAST ─────────────────────────────────────────────────── -->
