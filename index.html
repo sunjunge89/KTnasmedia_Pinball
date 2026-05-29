@@ -1227,7 +1227,6 @@
       <li><a href="#" id="nav-roles" onclick="showSection('roles');return false;">Roles</a></li>
       <li><a href="#" id="nav-process" onclick="showSection('process');return false;">Process</a></li>
       <li><a href="#" id="nav-creators" onclick="showSection('creators');return false;">Creators</a></li>
-      <li><a href="#" id="nav-contact" onclick="showSection('contact');return false;">Contact</a></li>
     </ul>
 
     <a href="#" class="nav-cta" onclick="handleDownload();return false;">Download Doc</a>
@@ -1524,24 +1523,15 @@
     <div id="creators-grid"></div>
   </section>
 
-  <!-- ─── CONTACT SECTION ──────────────────────────────────────────── -->
-  <section id="section-contact" class="page-section">
-    <div class="placeholder-wrap">
-      <p class="placeholder-eyebrow">CONTACT</p>
-      <h2 class="placeholder-title">Coming Soon</h2>
-      <p class="placeholder-desc">문의 양식 콘텐츠가 준비 중입니다.</p>
-    </div>
-  </section>
-
   <!-- ─── TOAST ─────────────────────────────────────────────────── -->
   <div id="toast">문서를 준비 중입니다. 파일을 연결해 주세요.</div>
 
   <script>
     /* ════════════════════════════════════════════════════════════
        PAGE ROUTING  –  6 nav items
-       about / product / roles / process / creators / contact
+       about / product / roles / process / creators
     ════════════════════════════════════════════════════════════ */
-    const NAV_IDS = ['about', 'product', 'roles', 'process', 'creators', 'contact'];
+    const NAV_IDS = ['about', 'product', 'roles', 'process', 'creators'];
     const hero = document.querySelector('.hero');
 
     function showSection(id) {
