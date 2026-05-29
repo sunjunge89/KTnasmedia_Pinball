@@ -1103,10 +1103,24 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 48px 64px 52px;
+      padding: 48px 32px 52px;
       display: flex;
       flex-direction: column;
       gap: 0;
+    }
+
+    /* 케이스 블록 래퍼 */
+    .cs-case-block {
+      background: #FAFAFA;
+      border: 1px solid #EBEBEB;
+      border-radius: 24px;
+      padding: 36px 40px 32px;
+      margin-bottom: 24px;
+    }
+
+    /* 헤더 */
+    .cs-header {
+      margin-bottom: 18px;
     }
 
     /* 헤더 */
@@ -1237,16 +1251,25 @@
     }
 
     .cs-brand-row {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .cs-advertiser-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    .cs-brand-name-row {
       display: flex;
       align-items: center;
       gap: 12px;
-    }
-
-    .cs-brand-prefix {
-      font-family: 'Figtree', sans-serif;
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--black);
     }
 
     .cs-brand-logo {
@@ -1318,11 +1341,11 @@
 
     .cs-kpi-col-title {
       font-family: 'Figtree', sans-serif;
-      font-size: 10px;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #bbb;
+      color: #1A1A1A;
       margin-bottom: 20px;
     }
 
@@ -1350,9 +1373,9 @@
     }
 
     .cs-kpi-sub {
-      font-size: 10px;
-      font-weight: 400;
-      color: #ccc;
+      font-size: 11px;
+      font-weight: 600;
+      color: #1A1A1A;
     }
 
     .cs-kpi-value {
@@ -1366,11 +1389,11 @@
     }
 
     .cs-kpi-pos {
-      color: var(--blue) !important;
+      color: var(--black) !important;
     }
 
     .cs-kpi-neg {
-      color: var(--red) !important;
+      color: var(--black) !important;
     }
 
     .cs-kpi-neutral {
@@ -1379,9 +1402,10 @@
 
     .cs-kpi-note {
       font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      color: #aaa;
-      line-height: 1.6;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.7;
+      word-break: keep-all;
     }
 
     /* 광고주/크리에이터 메타 */
@@ -2058,14 +2082,12 @@
         </p>
       </div>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
 
-      <!-- 첫번째 케이스 명시 -->
-      <div class="cs-case-title">CASE 1.</div>
+      <!-- CASE 1 박스 -->
+      <div class="cs-case-block">
+
+        <!-- 첫번째 케이스 명시 -->
+        <div class="cs-case-title">CASE 1.</div>
 
       <!-- 상단: 영상 + 캠페인 설명 -->
       <div class="cs-top">
@@ -2085,10 +2107,12 @@
         <!-- 캠페인 설명 -->
         <div class="cs-info">
           <div class="cs-brand-row">
-            <span class="cs-brand-prefix">▪️광고주 </span>
-            <div class="cs-brand-logo">HALEON</div>
-            <div class="cs-brand-sep"></div>
-            <div class="cs-brand-product">센소다인 <span class="cs-brand-sub">(Sensodyne)</span></div>
+            <span class="cs-advertiser-label">광고주</span>
+            <div class="cs-brand-name-row">
+              <div class="cs-brand-logo">HALEON</div>
+              <div class="cs-brand-sep"></div>
+              <div class="cs-brand-product">센소다인 <span class="cs-brand-sub">(Sensodyne)</span></div>
+            </div>
           </div>
           <p class="cs-desc">헤일리온의 센소다인 브랜드는 시린 증상 예방 및 완화 전문 치약으로서, <strong>조승연의 탐구생활 채널과</strong>의 <strong>협업 캠페인을
               통해</strong> 구매 고려도 강화와 실제 제품 구매(네이버
@@ -2135,14 +2159,14 @@
             <p class="cs-kpi-col-title">MEDIA PERFORMANCE <span class="cs-kpi-sub">(Demand GEN)</span></p>
             <div class="cs-kpi-col-items">
               <div class="cs-kpi-item">
-                <div class="cs-kpi-metric">CPC </div>
+                <div class="cs-kpi-metric">CPC</div>
                 <div class="cs-kpi-value cs-kpi-neg">−19%</div>
-                <div class="cs-kpi-note">동기간 브랜드 필름 소재로 운영한 디맨드젠 캠페인 대비</div>
+                <div class="cs-kpi-note">동기간 브랜드 필름 소재로 운영한<br>디맨드젠 캠페인 대비</div>
               </div>
               <div class="cs-kpi-item">
-                <div class="cs-kpi-metric">CTR </div>
+                <div class="cs-kpi-metric">CTR</div>
                 <div class="cs-kpi-value cs-kpi-pos">+30%</div>
-                <div class="cs-kpi-note">크리에이터 콘텐츠<br>조회자 기반 오디언스<br>vs<br>기존 오디언스 타겟팅</div>
+                <div class="cs-kpi-note">크리에이터 콘텐츠 조회자 기반 오디언스<br>vs 기존 오디언스 타겟팅</div>
               </div>
               <div class="cs-kpi-item">
                 <div class="cs-kpi-metric">CPV</div>
@@ -2154,6 +2178,87 @@
 
         </div>
       </div><!-- /cs-kpi-section -->
+
+      </div><!-- /cs-case-block -->
+      <br>
+      <!-- CASE 2 박스 -->
+      <div class="cs-case-block">
+
+        <div class="cs-case-title">CASE 2.</div>
+
+        <div class="cs-top">
+
+          <a class="cs-video-thumb" href="https://www.youtube.com/watch?v=p96B2NYFGTM&t=1269s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/p96B2NYFGTM/maxresdefault.jpg" alt="쿠쿠 에코웨일 협업 영상"
+              onerror="this.src='https://img.youtube.com/vi/p96B2NYFGTM/hqdefault.jpg'">
+            <div class="cs-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="cs-video-label">쿠쿠 에코웨일 · 협업 영상 보기 ↗</div>
+          </a>
+
+          <div class="cs-info">
+            <div class="cs-brand-row">
+              <span class="cs-advertiser-label">광고주</span>
+              <div class="cs-brand-name-row">
+                <div class="cs-brand-logo">CUCKOO</div>
+                <div class="cs-brand-sep"></div>
+                <div class="cs-brand-product">쿠쿠 에코웨일 <span class="cs-brand-sub">음식물처리기</span></div>
+              </div>
+            </div>
+            <p class="cs-desc">쿠쿠전자는 1978년 설립된 생활가전 브랜드로, 주력 제품인 밥솥 외에도 다양한 품목으로 제품을 확장하던 중, 에코웨일 음식물처리기 캠페인에서 유튜브 크리에이터와의 협업을 통해 브랜드 인지도 및 구매 고려도 강화를 목표했습니다. 쿠쿠전자는 브랜디드 콘텐츠의 발행뿐 아니라, <strong>Creator Boost의 채널 링킹 기능을 비롯한 다양한 비디오 및 퍼포먼스 솔루션</strong>을 활용한 paid boost 전략을 실행했고, 그 결과 <strong>높은 브랜드 리프트 및 서치 리프트</strong>를 기록했습니다. 오가닉 콘텐츠로만 진행한 경우 대비 상대적으로 낮은 비용으로 더 많은 조회수를 확보하며 <strong>Media ROI 관점에서도 개선된 효과</strong>를 달성할 수 있었습니다.</p>
+          </div>
+
+        </div>
+
+        <div class="cs-kpi-section">
+          <div class="cs-kpi-divider"></div>
+          <div class="cs-kpi-columns">
+
+            <div class="cs-kpi-col">
+              <p class="cs-kpi-col-title">BRAND &amp; SEARCH LIFT</p>
+              <div class="cs-kpi-col-items">
+                <div class="cs-kpi-item">
+                  <div class="cs-kpi-metric">브랜드 리프트</div>
+                  <div class="cs-kpi-value cs-kpi-neutral">17%</div>
+                  <div class="cs-kpi-note">인지도 (상대적 리프트)</div>
+                </div>
+                <div class="cs-kpi-item">
+                  <div class="cs-kpi-metric">검색 리프트</div>
+                  <div class="cs-kpi-value cs-kpi-neutral">316%</div>
+                  <div class="cs-kpi-note">제품 키워드 (상대적 리프트)</div>
+                </div>
+                <div class="cs-kpi-item">
+                  <div class="cs-kpi-metric">매출 <span style="font-size:10px;color:#bbb;">(네이버 스마트스토어)</span></div>
+                  <div class="cs-kpi-value cs-kpi-neutral">49%</div>
+                  <div class="cs-kpi-note">vs 크리에이터 협업 이전 기간</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cs-kpi-vsep"></div>
+
+            <div class="cs-kpi-col">
+              <p class="cs-kpi-col-title">PERFORMANCE</p>
+              <div class="cs-kpi-col-items">
+                <div class="cs-kpi-item">
+                  <div class="cs-kpi-metric">검색 리프트 비중</div>
+                  <div class="cs-kpi-value cs-kpi-neutral">+31%</div>
+                  <div class="cs-kpi-note">vs Control Group</div>
+                </div>
+                <div class="cs-kpi-item">
+                  <div class="cs-kpi-metric">Media ROI</div>
+                  <div class="cs-kpi-value cs-kpi-neutral">29%</div>
+                  <div class="cs-kpi-note">vs 오가닉 콘텐츠만 운영 대비</div>
+                </div>
+                <div class="cs-kpi-item"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /cs-case-block -->
 
     </div><!-- /cs-wrap -->
   </section>
