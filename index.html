@@ -370,8 +370,8 @@
       }
     }
 
-    /* ─── HOW IT WORKS ──────────────────────────────────────── */
-    #section-how {
+    /* ─── ABOUT / HOW IT WORKS ──────────────────────────────── */
+    #section-about {
       padding: 120px 40px 100px;
       text-align: center;
       background: #fff;
@@ -568,9 +568,8 @@
       vertical-align: middle;
     }
 
-    /* ─── CREATORS SECTION (non-overlay) ───────────────────── */
+    /* ─── CREATORS SECTION ──────────────────────────────────── */
     #section-creators {
-      display: none;
       flex-direction: column;
       min-height: calc(100vh - 68px);
       background: var(--white);
@@ -717,6 +716,55 @@
       border-radius: 4px;
     }
 
+    /* ─── PAGE SECTIONS ──────────────────────────────────────── */
+    .page-section {
+      display: none;
+    }
+    .page-section.active {
+      display: block;
+    }
+
+    /* Hero is shown separately (not a .page-section) */
+    .hero.hidden {
+      display: none !important;
+    }
+
+    /* ─── PLACEHOLDER SECTIONS ───────────────────────────────── */
+    .placeholder-wrap {
+      min-height: calc(100vh - 68px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 40px;
+    }
+
+    .placeholder-eyebrow {
+      font-family: 'Figtree', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 20px;
+    }
+
+    .placeholder-title {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      color: var(--black);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .placeholder-desc {
+      font-size: 16px;
+      color: #888;
+      max-width: 400px;
+    }
+
     /* ─── TOAST ──────────────────────────────────────────────── */
     #toast {
       position: fixed;
@@ -747,20 +795,22 @@
 
   <!-- ─── NAV ─────────────────────────────────────────────────── -->
   <nav>
-    <div class="logo-mark" onclick="showHome()">
+    <div class="logo-mark" onclick="showSection('about')">
       <img src="./KT_nasmedia.png" alt="KT Nasmedia" class="logo-img-nasmedia" />
       <div class="logo-divider"></div>
       <img src="./Pinball.png" alt="Pinball" class="logo-img-pinball" />
     </div>
 
     <ul class="nav-links">
-      <li><a href="#" onclick="showHome();return false;">About</a></li>
-      <li><a href="#" onclick="showHome();return false;">Ecosystem</a></li>
-      <li><a href="#" onclick="showHome();return false;">Product</a></li>
-      <li><a href="#" id="nav-creators" onclick="showCreators();return false;">Creators</a></li>
+      <li><a href="#" id="nav-about"   onclick="showSection('about');return false;">Home</a></li>
+      <li><a href="#" id="nav-product" onclick="showSection('product');return false;">Product</a></li>
+      <li><a href="#" id="nav-roles"   onclick="showSection('roles');return false;">Roles</a></li>
+      <li><a href="#" id="nav-process" onclick="showSection('process');return false;">Process</a></li>
+      <li><a href="#" id="nav-creators" onclick="showSection('creators');return false;">Creators</a></li>
+      <li><a href="#" id="nav-contact" onclick="showSection('contact');return false;">Contact</a></li>
     </ul>
 
-    <a href="#" class="nav-cta" onclick="openPage('explore');return false;">Explore Common</a>
+    <a href="#" class="nav-cta" onclick="handleDownload();return false;">Download Doc</a>
   </nav>
 
   <!-- ─── HERO ─────────────────────────────────────────────────── -->
@@ -789,8 +839,8 @@
     </div>
   </section>
 
-  <!-- ─── HOW IT WORKS SECTION ────────────────────────────────────── -->
-  <section id="section-how">
+  <!-- ─── ABOUT SECTION ────────────────────────────────────────── -->
+  <section id="section-about" class="page-section active">
     <p class="how-eyebrow">HOW IT WORKS</p>
     <h2 class="how-title">
         <span class="how-title-line1">
@@ -923,132 +973,354 @@
       </div>
 
     </div>
+  </section><!-- /section-about -->
+
+  <!-- ─── PRODUCT SECTION ──────────────────────────────────────────── -->
+  <section id="section-product" class="page-section">
+    <div class="placeholder-wrap">
+      <p class="placeholder-eyebrow">PRODUCT</p>
+      <h2 class="placeholder-title">Coming Soon</h2>
+      <p class="placeholder-desc">제품 소개 콘텐츠가 준비 중입니다.</p>
+    </div>
   </section>
 
-    <!-- ─── CREATORS SECTION ──────────────────────────────────────── -->
-  <section id="section-creators">
+  <!-- ─── ROLES SECTION ────────────────────────────────────────────── -->
+  <section id="section-roles" class="page-section">
+    <div class="placeholder-wrap">
+      <p class="placeholder-eyebrow">ROLES</p>
+      <h2 class="placeholder-title">Coming Soon</h2>
+      <p class="placeholder-desc">역할 소개 콘텐츠가 준비 중입니다.</p>
+    </div>
+  </section>
+
+  <!-- ─── PROCESS SECTION ──────────────────────────────────────────── -->
+  <section id="section-process" class="page-section">
+    <div class="placeholder-wrap">
+      <p class="placeholder-eyebrow">PROCESS</p>
+      <h2 class="placeholder-title">Coming Soon</h2>
+      <p class="placeholder-desc">프로세스 소개 콘텐츠가 준비 중입니다.</p>
+    </div>
+  </section>
+
+  <!-- ─── CREATORS SECTION ─────────────────────────────────────────── -->
+  <section id="section-creators" class="page-section">
     <div id="creators-filter">
-      <button class="filter-btn active" data-cat="all" onclick="filterCreators(this,'all')">전체</button>
-      <button class="filter-btn" data-cat="엔터테인먼트" onclick="filterCreators(this,'엔터테인먼트')">엔터테인먼트</button>
-      <button class="filter-btn" data-cat="게임/애니" onclick="filterCreators(this,'게임/애니')">게임 / 애니</button>
-      <button class="filter-btn" data-cat="뷰티/라이프" onclick="filterCreators(this,'뷰티/라이프')">뷰티 / 라이프</button>
-      <button class="filter-btn" data-cat="피트니스" onclick="filterCreators(this,'피트니스')">피트니스</button>
-      <button class="filter-btn" data-cat="테크/스포츠/자동차" onclick="filterCreators(this,'테크/스포츠/자동차')">테크 / 스포츠 /
-        자동차</button>
+      <button class="filter-btn active" data-cat="all"          onclick="filterCreators(this,'all')">전체</button>
+      <button class="filter-btn" data-cat="뷰티"                onclick="filterCreators(this,'뷰티')">뷰티</button>
+      <button class="filter-btn" data-cat="피트니스"             onclick="filterCreators(this,'피트니스')">피트니스</button>
+      <button class="filter-btn" data-cat="게임"                onclick="filterCreators(this,'게임')">게임</button>
+      <button class="filter-btn" data-cat="엔터테인먼트"          onclick="filterCreators(this,'엔터테인먼트')">엔터테인먼트</button>
+      <button class="filter-btn" data-cat="라이프스타일"          onclick="filterCreators(this,'라이프스타일')">라이프스타일</button>
+      <button class="filter-btn" data-cat="뮤직"                onclick="filterCreators(this,'뮤직')">뮤직</button>
+      <button class="filter-btn" data-cat="애니메이션"           onclick="filterCreators(this,'애니메이션')">애니메이션</button>
+      <button class="filter-btn" data-cat="테크"                onclick="filterCreators(this,'테크')">테크</button>
+      <button class="filter-btn" data-cat="자동차"              onclick="filterCreators(this,'자동차')">자동차</button>
+      <button class="filter-btn" data-cat="미디어"              onclick="filterCreators(this,'미디어')">미디어</button>
     </div>
     <div id="creators-grid"></div>
+  </section>
+
+  <!-- ─── CONTACT SECTION ──────────────────────────────────────────── -->
+  <section id="section-contact" class="page-section">
+    <div class="placeholder-wrap">
+      <p class="placeholder-eyebrow">CONTACT</p>
+      <h2 class="placeholder-title">Coming Soon</h2>
+      <p class="placeholder-desc">문의 양식 콘텐츠가 준비 중입니다.</p>
+    </div>
   </section>
 
   <!-- ─── TOAST ─────────────────────────────────────────────────── -->
   <div id="toast">문서를 준비 중입니다. 파일을 연결해 주세요.</div>
 
   <script>
-    /* ── Page routing ── */
-    const hero = document.querySelector('.hero');
-    const secCreators = document.getElementById('section-creators');
-    const navCreators = document.getElementById('nav-creators');
+    /* ════════════════════════════════════════════════════════════
+       PAGE ROUTING  –  6 nav items
+       about / product / roles / process / creators / contact
+    ════════════════════════════════════════════════════════════ */
+    const NAV_IDS    = ['about','product','roles','process','creators','contact'];
+    const hero       = document.querySelector('.hero');
 
-    const secHow = document.getElementById('section-how');
+    function showSection(id) {
+      // 히어로 숨기기 (about 포함 모든 섹션 전환 시)
+      if (id === 'about') {
+        hero.classList.remove('hidden');
+      } else {
+        hero.classList.add('hidden');
+      }
 
-    function showCreators() {
-      hero.style.display = 'none';
-      secHow.style.display = 'none';
-      secCreators.classList.add('active');
-      navCreators.classList.add('active');
-      renderCreators('all');
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+      // 모든 섹션 비활성화
+      NAV_IDS.forEach(name => {
+        const sec = document.getElementById('section-' + name);
+        if (sec) sec.classList.remove('active');
+        const nav = document.getElementById('nav-' + name);
+        if (nav) nav.classList.remove('active');
+      });
+
+      // 선택 섹션 활성화
+      const sec = document.getElementById('section-' + id);
+      if (sec) sec.classList.add('active');
+      const nav = document.getElementById('nav-' + id);
+      if (nav) nav.classList.add('active');
+
+      // creators 진입 시 그리드 렌더
+      if (id === 'creators') {
+        renderCreators('all');
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function showHome() {
-      secCreators.classList.remove('active');
-      navCreators.classList.remove('active');
-      hero.style.display = '';
-      secHow.style.display = '';
-    }
+    // 초기 상태: about 활성화 + hero 표시
+    (function init() {
+      showSection('about');
+    })();
 
     /* ── Creator Data ── */
     const creatorsData = [
-      // ── 엔터테인먼트 ─────────────────────────────────────────
-      { name: 'BeatboxJCOP', ytUrl: 'https://www.youtube.com/@BeatboxJCOP', subs: '4,960만', img: 'BeatboxJCOP', cat: '엔터테인먼트', tags: ['엔터테인먼트', '글로벌', '뮤직'] },
-      { name: '크레이지 그래빠', ytUrl: 'https://www.youtube.com/channel/UCNQAoLEv87L7NgUp4We3HIg', subs: '2,890만', img: 'UCNQAoLEv87L7NgUp4We3HIg', cat: '엔터테인먼트', tags: ['엔터테인먼트', '글로벌'] },
-      { name: '병아리언니 Byungari', ytUrl: 'https://www.youtube.com/channel/UC8TCA15kPzNw9ppRaVZ937w', subs: '1,340만', img: 'UC8TCA15kPzNw9ppRaVZ937w', cat: '엔터테인먼트', tags: ['엔터테인먼트', '글로벌'] },
-      { name: 'waveya2011', ytUrl: 'https://www.youtube.com/@waveya2011', subs: '366만', img: 'waveya2011', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
-      { name: '동네놈들', ytUrl: 'https://www.youtube.com/@%EB%8F%99%EB%84%A4%EB%86%88%EB%93%A4/videos', subs: '161만', img: null, cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
-      { name: 'Reyong ASMR', ytUrl: 'https://www.youtube.com/@reyongasmr', subs: '101만', img: 'reyongasmr', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
-      { name: '책읽기 좋은날', ytUrl: 'https://www.youtube.com/@ReadingGoodday', subs: '98만', img: 'ReadingGoodday', cat: '엔터테인먼트', tags: ['오디오', '엔터테인먼트'] },
-      { name: 'TIMT', ytUrl: 'https://www.youtube.com/@timt_official', subs: '76.7만', img: 'timt_official', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
-      // ── 게임 / 애니 ──────────────────────────────────────────
-      { name: "GH'S", ytUrl: 'http://www.youtube.com/@GH.S', subs: '2,730만', img: 'GH.S', cat: '게임/애니', tags: ['게임', '애니메이션'] },
-      { name: '캐릭온 TV', ytUrl: 'https://www.youtube.com/@CharaOn', subs: '251만', img: 'CharaOn', cat: '게임/애니', tags: ['게임', '애니메이션'] },
-      { name: '펑커슨', ytUrl: 'https://www.youtube.com/@Jeny_Punker', subs: '243만', img: 'Jeny_Punker', cat: '게임/애니', tags: ['게임', '애니메이션', '글로벌'] },
-      { name: '혀누', ytUrl: 'https://www.youtube.com/@%ED%98%80%EB%88%84HyuNoo', subs: '75만', img: null, cat: '게임/애니', tags: ['애니메이션'] },
-      { name: '만취한 오박사', ytUrl: 'https://www.youtube.com/@DrunkOakPokemon', subs: '48.7만', img: 'DrunkOakPokemon', cat: '게임/애니', tags: ['게임', '애니메이션'] },
-      { name: '깝도이', ytUrl: 'https://www.youtube.com/@%EA%B9%9D%EB%8F%84%EC%9D%B4', subs: '26.3만', img: null, cat: '게임/애니', tags: ['게임'] },
-      { name: '캡틴김수호', ytUrl: 'https://www.youtube.com/@suholetsgo', subs: '-', img: 'suholetsgo', cat: '게임/애니', tags: ['게임'] },
-      { name: '나민', ytUrl: 'https://www.youtube.com/@namin1004', subs: '-', img: 'namin1004', cat: '게임/애니', tags: ['게임'] },
-      { name: '김나성', ytUrl: 'https://www.youtube.com/@Naseongkim', subs: '-', img: 'Naseongkim', cat: '게임/애니', tags: ['게임'] },
-      { name: '즐기는 남자들', ytUrl: 'https://www.youtube.com/@%EC%A6%90%EA%B8%B0%EB%8A%94%EB%82%A8%EC%9E%90%EB%93%A4', subs: '-', img: null, cat: '게임/애니', tags: ['게임', '엔터테인먼트'] },
-      { name: '앤새ANDSADLY', ytUrl: 'https://www.youtube.com/@%EC%95%A4%EC%83%88ANDSADLY', subs: '-', img: null, cat: '게임/애니', tags: ['게임'] },
-      { name: '새우새우', ytUrl: 'https://www.youtube.com/@%EC%83%88%EC%9A%B0%EC%83%88%EC%9A%B0', subs: '-', img: null, cat: '게임/애니', tags: ['게임'] },
-      { name: '에브라본', ytUrl: 'https://www.youtube.com/results?search_query=에브라본', subs: '-', img: null, cat: '게임/애니', tags: ['게임'] },
-      // ── 뷰티 / 라이프 ────────────────────────────────────────
-      { name: '1분요리 뚝딱이형', ytUrl: 'https://www.youtube.com/@1mincook', subs: '305만', img: '1mincook', cat: '뷰티/라이프', tags: ['라이프스타일', '푸드'] },
-      { name: 'Edward Avila', ytUrl: 'https://www.youtube.com/@Edward_Avila', subs: '153만', img: 'Edward_Avila', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일', '패션', '글로벌'] },
-      { name: '국가비', ytUrl: 'https://www.youtube.com/@gabiekook', subs: '138만', img: 'gabiekook', cat: '뷰티/라이프', tags: ['라이프스타일', '푸드'] },
-      { name: 'BeBell', ytUrl: 'https://www.youtube.com/@BeBell', subs: '110만', img: 'BeBell', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일', '패션', '글로벌'] },
-      { name: 'BIGSIS 빅씨스', ytUrl: 'https://www.youtube.com/@BIGSIS', subs: '106만', img: 'BIGSIS', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일'] },
-      { name: '한식푸우', ytUrl: 'https://www.youtube.com/@koreanfood99', subs: '76.9만', img: 'koreanfood99', cat: '뷰티/라이프', tags: ['라이프스타일', '먹방'] },
-      { name: 'YooTrue 유트루', ytUrl: 'https://www.youtube.com/@yootrue', subs: '59.8만', img: 'yootrue', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일'] },
-      { name: 'Kelly Kim', ytUrl: 'https://www.youtube.com/@KellyyoujinKim', subs: '52.4만', img: 'KellyyoujinKim', cat: '뷰티/라이프', tags: ['라이프스타일', '뷰티', '패션', '글로벌'] },
-      { name: '데일리 미라몰', ytUrl: 'https://www.youtube.com/channel/UCk1BE73NfSUGz19LpNg9E-w', subs: '38.7만', img: 'UCk1BE73NfSUGz19LpNg9E-w', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일'] },
-      { name: '코스모지나', ytUrl: 'https://www.youtube.com/@cosmojina', subs: '31.8만', img: 'cosmojina', cat: '뷰티/라이프', tags: ['라이프스타일'] },
-      { name: '선민', ytUrl: 'https://www.youtube.com/channel/UCYykroDCvkyslfYNvJtencA', subs: '30.5만', img: 'UCYykroDCvkyslfYNvJtencA', cat: '뷰티/라이프', tags: ['라이프스타일'] },
-      { name: '조이차니', ytUrl: 'https://www.youtube.com/@joyofchanlife', subs: '28.6만', img: 'joyofchanlife', cat: '뷰티/라이프', tags: ['라이프스타일', '글로벌'] },
-      { name: '퀸예진', ytUrl: 'https://www.youtube.com/@Queenyejin', subs: '22.2만', img: 'Queenyejin', cat: '뷰티/라이프', tags: ['뷰티', '패션'] },
-      { name: '황예주', ytUrl: 'https://www.youtube.com/@Yejoo_Hw', subs: '6.17만', img: 'Yejoo_Hw', cat: '뷰티/라이프', tags: ['뷰티', '패션'] },
-      { name: '듬아', ytUrl: 'https://www.youtube.com/@%EB%93%AC%EC%95%84', subs: '15.4만', img: null, cat: '뷰티/라이프', tags: ['뷰티'] },
-      { name: '릴리옌젤', ytUrl: 'https://www.youtube.com/@Lily_yengel', subs: '23.7만', img: 'Lily_yengel', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일'] },
-      { name: '상아튜브', ytUrl: 'https://www.youtube.com/@sangahtube', subs: '18.2만', img: 'sangahtube', cat: '뷰티/라이프', tags: ['라이프스타일'] },
-      { name: '새영', ytUrl: 'https://www.youtube.com/@say___young', subs: '-', img: 'say___young', cat: '뷰티/라이프', tags: ['라이프스타일'] },
-      { name: '고나윤', ytUrl: 'https://www.youtube.com/@gonayun', subs: '-', img: 'gonayun', cat: '뷰티/라이프', tags: ['라이프스타일'] },
-      { name: '희매몽', ytUrl: 'https://www.youtube.com/@fukuokalife', subs: '-', img: 'fukuokalife', cat: '뷰티/라이프', tags: ['라이프스타일', '글로벌'] },
-      { name: '지니핏', ytUrl: 'https://www.youtube.com/@GinaFitt', subs: '-', img: 'GinaFitt', cat: '뷰티/라이프', tags: ['피트니스', '뷰티'] },
-      { name: '우엉', ytUrl: 'https://www.youtube.com/@ueong', subs: '-', img: 'ueong', cat: '뷰티/라이프', tags: ['라이프스타일'] },
-      { name: '디어연스', ytUrl: 'https://www.youtube.com/@dearyeons', subs: '-', img: 'dearyeons', cat: '뷰티/라이프', tags: ['뷰티'] },
-      // ── 피트니스 ─────────────────────────────────────────────
-      { name: '비타민신지니', ytUrl: 'https://www.youtube.com/@vitaminjiny', subs: '130만', img: 'vitaminjiny', cat: '피트니스', tags: ['피트니스'] },
-      { name: 'BIGSIS 빅씨스', ytUrl: 'https://www.youtube.com/@BIGSIS', subs: '106만', img: 'BIGSIS', cat: '뷰티/라이프', tags: ['뷰티', '라이프스타일'] },
-      { name: 'afit 에이핏', ytUrl: 'https://www.youtube.com/@afit_', subs: '86.7만', img: 'afit_', cat: '피트니스', tags: ['피트니스'] },
-      // ── 테크 / 스포츠 / 자동차 ───────────────────────────────
-      { name: '고성국TV', ytUrl: 'https://www.youtube.com/@%EA%B3%A0%EC%84%B1%EA%B5%ADTV', subs: '133만', img: null, cat: '테크/스포츠/자동차', tags: ['미디어'] },
-      { name: 'DK YOO', ytUrl: 'https://www.youtube.com/@DKYOO', subs: '66.8만', img: 'DKYOO', cat: '테크/스포츠/자동차', tags: ['스포츠', '피트니스'] },
-      { name: '오라잇 스튜디오', ytUrl: 'https://www.youtube.com/@AIT', subs: '63.5만', img: 'AIT', cat: '테크/스포츠/자동차', tags: ['테크'] },
-      { name: '미디어오토', ytUrl: 'https://www.youtube.com/@mediaAUTO', subs: '41.4만', img: 'mediaAUTO', cat: '테크/스포츠/자동차', tags: ['자동차'] },
-      { name: '안오준TV', ytUrl: 'https://www.youtube.com/@%EC%95%88%EC%98%A4%EC%A4%80TV', subs: '15.2만', img: null, cat: '테크/스포츠/자동차', tags: ['스포츠'] },
-      { name: 'Gadget Seoul', ytUrl: 'https://www.youtube.com/gadgetseoul', subs: '-', img: 'gadgetseoul', cat: '테크/스포츠/자동차', tags: ['테크'] },
-      { name: '장동선의 궁금한 뇌', ytUrl: 'https://www.youtube.com/results?search_query=장동선+궁금한뇌', subs: '-', img: null, cat: '테크/스포츠/자동차', tags: ['테크', '미디어'] },
+      // ── 뷰티 (36명) ──────────────────────────────────────────
+      { name: 'Edward Avila', ytUrl: 'https://www.youtube.com/channel/UCNM5-NRrDxL0PWC5H52smaQ', subs: '153만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: 'BeBell', ytUrl: 'https://www.youtube.com/@BeBell', subs: '110만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      { name: 'BIGSIS 빅씨스', ytUrl: 'https://www.youtube.com/channel/UCfDkQiPchwM0F2SkHWl5JYQ', subs: '106만', cat: '뷰티', tags: ['뷰티', '피트니스'] },
+      { name: 'YooTrue 유트루', ytUrl: 'https://www.youtube.com/user/yootruebeutyroom', subs: '59.8만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: 'Kelly Kim', ytUrl: 'https://www.youtube.com/channel/UCG8tU5lHTYV2SJVxzB-40GA', subs: '52.4만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      { name: 'Sabrina Azhar', ytUrl: 'https://www.youtube.com/@sabrinaazhar', subs: '47.3만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '데일리 미라클', ytUrl: 'https://www.youtube.com/@dailymiracle', subs: '38.4만', cat: '뷰티', tags: ['뷰티'] },
+      { name: '코스모지나', ytUrl: 'https://www.youtube.com/@cosmojina', subs: '31.4만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: '선민 Sunmin', ytUrl: 'https://www.youtube.com/channel/UCYykroDCvkyslfYNvJtencA', subs: '30.5만', cat: '뷰티', tags: ['뷰티'] },
+      { name: '조이차니 Joychan', ytUrl: 'https://www.youtube.com/channel/UC93s-VhhKysH8nenm_-ZR0Q', subs: '28.5만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: '릴리옌젤 lily yengel', ytUrl: 'https://www.youtube.com/channel/UCnVaTE5_mmeVQmogfoMxlnw', subs: '23.5만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: '상아튜브', ytUrl: 'https://www.youtube.com/channel/UCwumkIEZ97nsw0Anv90zehQ', subs: '17.9만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: '고나윤 Nayun Ko', ytUrl: 'https://www.youtube.com/@gonayun', subs: '14.4만', cat: '뷰티', tags: ['뷰티', '트래블'] },
+      { name: 'NICOLE 니콜', ytUrl: 'https://www.youtube.com/@nicolekorea', subs: '12.4만', cat: '뷰티', tags: ['뷰티', '패밀리'] },
+      { name: '클레어 Claire', ytUrl: 'https://www.youtube.com/@Studying.Mommy.Claire', subs: '11.3만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: 'Dear. yeons 디어연스', ytUrl: 'https://www.youtube.com/@dearyeons', subs: '8.6만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '라몽', ytUrl: 'https://www.youtube.com/@lamongyoga', subs: '8.1만', cat: '뷰티', tags: ['뷰티', '피트니스'] },
+      { name: '미국온제니', ytUrl: 'https://www.youtube.com/@hyejintojenny', subs: '6.6만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '희매몽', ytUrl: 'https://www.youtube.com/@fukuokalife', subs: '6.5만', cat: '뷰티', tags: ['뷰티', '패밀리'] },
+      { name: '황예주', ytUrl: 'https://www.youtube.com/@Yejoo_Hw', subs: '6.1만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      { name: '새영 SAE YOUNG', ytUrl: 'https://www.youtube.com/@say___young', subs: '5.7만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      { name: '고수 GOSOO Vlog', ytUrl: 'https://www.youtube.com/@gosoovlog', subs: '4.8만', cat: '뷰티', tags: ['뷰티', '패밀리'] },
+      { name: '크리스틴 Christine', ytUrl: 'https://www.youtube.com/@christinekorea', subs: '4.7만', cat: '뷰티', tags: ['뷰티'] },
+      { name: '히씨 HeeSee', ytUrl: 'https://www.youtube.com/@heeseelife', subs: '4.0만', cat: '뷰티', tags: ['뷰티', '트래블'] },
+      { name: 'Bonne Nuit 본뉘', ytUrl: 'https://www.youtube.com/@bonnenuit', subs: '3.3만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '션님 Shawn', ytUrl: 'https://www.youtube.com/channel/UCW2l319Py0yPCISabXDVOqA', subs: '3.1만', cat: '뷰티', tags: ['뷰티', '트래블'] },
+      { name: '오하은 HANNAH OH', ytUrl: 'https://www.youtube.com/@hannahoh', subs: '2.7만', cat: '뷰티', tags: ['뷰티', '라이프스타일'] },
+      { name: '현소를찾아서', ytUrl: 'https://www.youtube.com/@hyunsofind', subs: '2.2만', cat: '뷰티', tags: ['뷰티'] },
+      { name: '일본인 시카', ytUrl: 'https://www.youtube.com/@shika_kr', subs: '2.0만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '현못 Hyunmot', ytUrl: 'https://www.youtube.com/@hyunmot', subs: '1.5만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      { name: 'Yours, Jinny 지니 킴', ytUrl: 'https://www.youtube.com/@yoursjinny', subs: '1.2만', cat: '뷰티', tags: ['뷰티', '엔터테인먼트'] },
+      { name: '이수아 LeeSua', ytUrl: 'https://www.youtube.com/@leesua', subs: '1.2만', cat: '뷰티', tags: ['뷰티', '패밀리'] },
+      { name: 'niina / 元Kpopアイドル', ytUrl: 'https://www.youtube.com/@niina_korea', subs: '1.1만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '은우쏭', ytUrl: 'https://www.youtube.com/@eunwoosong', subs: '0.8만', cat: '뷰티', tags: ['뷰티', '글로벌'] },
+      { name: '숩사일 SOOBSAIL', ytUrl: 'https://www.youtube.com/@soobsail', subs: '0.6만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      { name: '요쵸', ytUrl: 'https://www.youtube.com/@yocho', subs: '0.5만', cat: '뷰티', tags: ['뷰티', '패션'] },
+      // ── 피트니스 (6명) ─────────────────────────────────────────
+      { name: '비타민신지니 VitaminJINY', ytUrl: 'https://www.youtube.com/channel/UC9trbyGOOjJmMea3w6c-e2A', subs: '130만', cat: '피트니스', tags: ['피트니스'] },
+      { name: 'afit 에이핏', ytUrl: 'https://www.youtube.com/channel/UCRGZCFuFCwp2D_YKByrqRfw', subs: '86.7만', cat: '피트니스', tags: ['피트니스'] },
+      { name: 'DK YOO', ytUrl: 'https://www.youtube.com/@DKYOO', subs: '66.8만', cat: '피트니스', tags: ['피트니스', '엔터테인먼트'] },
+      { name: '지나핏', ytUrl: 'https://www.youtube.com/@ginafit', subs: '16.3만', cat: '피트니스', tags: ['피트니스', '라이프스타일'] },
+      { name: '해피하루 happyharuu', ytUrl: 'https://www.youtube.com/@happyharuu', subs: '8.3만', cat: '피트니스', tags: ['피트니스'] },
+      { name: '히릿 HIRIT', ytUrl: 'https://www.youtube.com/@hirit', subs: '0.9만', cat: '피트니스', tags: ['피트니스', '라이프스타일'] },
+      // ── 게임 (20명) ────────────────────────────────────────────
+      { name: "GH'S", ytUrl: 'https://www.youtube.com/c/GHSGHS', subs: '2730만', cat: '게임', tags: ['게임', '애니메이션'] },
+      { name: '캐릭온 TV', ytUrl: 'https://www.youtube.com/channel/UCyn_E0ZE8RNOnYnF3lVaCOQ', subs: '251만', cat: '게임', tags: ['게임', '애니메이션'] },
+      { name: '펑커슨', ytUrl: 'https://www.youtube.com/@Jeny_Punker', subs: '243만', cat: '게임', tags: ['게임', '글로벌'] },
+      { name: '만취한 오박사', ytUrl: 'https://www.youtube.com/@DrunkOakPokemon', subs: '48.7만', cat: '게임', tags: ['게임', '애니메이션'] },
+      { name: '깝도이', ytUrl: 'https://www.youtube.com/channel/UCqVkQsNin4MdGFrWvzFVOKw', subs: '22.8만', cat: '게임', tags: ['게임'] },
+      { name: '캡틴김수호', ytUrl: 'https://www.youtube.com/channel/UCYaFxuv97e0qSx1MU9FvhGg', subs: '22.0만', cat: '게임', tags: ['게임'] },
+      { name: '앤새', ytUrl: 'https://www.youtube.com/channel/UCZQvXBMUT7ZMM5i9w9ZFp_Q', subs: '17.0만', cat: '게임', tags: ['게임'] },
+      { name: '나민', ytUrl: 'https://www.youtube.com/channel/UCMY6poKyd6VBUtLywAcoy1g', subs: '13.0만', cat: '게임', tags: ['게임'] },
+      { name: '즐기는 남자들', ytUrl: 'https://www.youtube.com/channel/UCP1rKrteinsrN5yxtF435EA', subs: '12.0만', cat: '게임', tags: ['게임'] },
+      { name: '치리스 Chirisu', ytUrl: 'https://www.youtube.com/@chirisu', subs: '11.1만', cat: '게임', tags: ['게임'] },
+      { name: '까까오징', ytUrl: 'https://www.youtube.com/channel/UCFnExCWpSmu4yzKzKmVsu1g', subs: '9.1만', cat: '게임', tags: ['게임', '애니메이션'] },
+      { name: '새우새우', ytUrl: 'https://www.youtube.com/user/FishBungUh', subs: '8.0만', cat: '게임', tags: ['게임'] },
+      { name: '김세둥', ytUrl: 'https://www.youtube.com/@kimsedung', subs: '7.0만', cat: '게임', tags: ['게임'] },
+      { name: 'EVRABON4', ytUrl: 'https://www.youtube.com/@EVRABON4', subs: '7.0만', cat: '게임', tags: ['게임'] },
+      { name: '김나성', ytUrl: 'https://www.youtube.com/channel/UCRjQDHdSObypL53Lez8XTBA', subs: '5.8만', cat: '게임', tags: ['게임'] },
+      { name: '귀월', ytUrl: 'https://www.youtube.com/channel/UCSGYG1lKQVCPxxr-2-Q3dMg', subs: '5.4만', cat: '게임', tags: ['게임'] },
+      { name: '끼얼균', ytUrl: 'https://www.youtube.com/@kkiulgyun', subs: '4.2만', cat: '게임', tags: ['게임'] },
+      { name: '김편집', ytUrl: 'https://www.youtube.com/@kimedit', subs: '3.2만', cat: '게임', tags: ['게임'] },
+      { name: '유봄냥', ytUrl: 'https://www.youtube.com/@yubomyang', subs: '2.6만', cat: '게임', tags: ['게임'] },
+      { name: '지갑수비대', ytUrl: 'https://www.youtube.com/@walletguard', subs: '0.8만', cat: '게임', tags: ['게임'] },
+      // ── 엔터테인먼트 (14명) ────────────────────────────────────
+      { name: 'BeatboxJCOP', ytUrl: 'https://www.youtube.com/channel/UCdX5KXiCTPYWYZscfphgQ4g', subs: '4960만', cat: '엔터테인먼트', tags: ['엔터테인먼트', '글로벌'] },
+      { name: '크레이지 그래빠', ytUrl: 'https://youtube.com/@crazygreapa', subs: '2890만', cat: '엔터테인먼트', tags: ['엔터테인먼트', '글로벌'] },
+      { name: '병아리언니 Byungari', ytUrl: 'https://www.youtube.com/channel/UC8TCA15kPzNw9ppRaVZ937w', subs: '1340만', cat: '엔터테인먼트', tags: ['엔터테인먼트', '글로벌'] },
+      { name: 'waveya2011', ytUrl: 'https://www.youtube.com/@waveya2011', subs: '366만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      { name: '동네놈들', ytUrl: 'https://www.youtube.com/channel/UCIuFnJrRwHEUcIVtozJnUGA', subs: '161만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      { name: 'Reyong ASMR 리용', ytUrl: 'https://www.youtube.com/@reyongasmr', subs: '101만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      { name: '책읽기 좋은날', ytUrl: 'https://www.youtube.com/channel/UC17lvWECf2AWRbqKuCcf4VQ', subs: '98.0만', cat: '엔터테인먼트', tags: ['오디오', '엔터테인먼트'] },
+      { name: 'TIMT', ytUrl: 'https://www.youtube.com/@timt_official', subs: '76.7만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      { name: 'Kwany', ytUrl: 'https://www.youtube.com/@kwany', subs: '37.4만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      { name: '오조', ytUrl: 'https://www.youtube.com/@ohjo', subs: '26.5만', cat: '엔터테인먼트', tags: ['엔터테인먼트', '라이프스타일'] },
+      { name: '예술적인남자 김세준', ytUrl: 'https://www.youtube.com/@artisticman', subs: '6.2만', cat: '엔터테인먼트', tags: ['엔터테인먼트', '라이프스타일'] },
+      { name: '이윤하', ytUrl: 'https://www.youtube.com/@leeyunha', subs: '5.4만', cat: '엔터테인먼트', tags: ['엔터테인먼트', '뮤직'] },
+      { name: '이달의 별 Monthly Star', ytUrl: 'https://www.youtube.com/@monthlystar', subs: '3.0만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      { name: 'LA Dance Studio', ytUrl: 'https://www.youtube.com/@ladancestudio', subs: '0.7만', cat: '엔터테인먼트', tags: ['엔터테인먼트'] },
+      // ── 라이프스타일 (10명) ────────────────────────────────────
+      { name: '1분요리 뚝딱이형', ytUrl: 'https://www.youtube.com/@1mincook', subs: '305만', cat: '라이프스타일', tags: ['라이프스타일', '푸드'] },
+      { name: '한식푸우 Korean Food', ytUrl: 'https://www.youtube.com/channel/UC1Wq-BQZblFGbGgDAoCwrmA', subs: '76.9만', cat: '라이프스타일', tags: ['라이프스타일', '먹방'] },
+      { name: '단앤조엘 Dan and Joel', ytUrl: 'https://www.youtube.com/channel/UCQstdMawQNSGBTlaP8FyIFA', subs: '29.6만', cat: '라이프스타일', tags: ['라이프스타일', '글로벌'] },
+      { name: 'Baby Yebin', ytUrl: 'https://www.youtube.com/@babyyebin', subs: '22.0만', cat: '라이프스타일', tags: ['라이프스타일', '패밀리'] },
+      { name: '이수티븨 isutv', ytUrl: 'https://www.youtube.com/channel/UCXoQ90CCc6tkzIUOyjAZayA', subs: '15.6만', cat: '라이프스타일', tags: ['라이프스타일', '패밀리'] },
+      { name: '다이앤리 Dianry', ytUrl: 'https://www.youtube.com/@dianry', subs: '5.2만', cat: '라이프스타일', tags: ['라이프스타일', '글로벌'] },
+      { name: '켄키푸드클럽', ytUrl: 'https://www.youtube.com/@kenkyfoodclub', subs: '2.3만', cat: '라이프스타일', tags: ['라이프스타일', '패밀리'] },
+      { name: '쭈야네 집', ytUrl: 'https://www.youtube.com/@juuyanejip', subs: '1.2만', cat: '라이프스타일', tags: ['라이프스타일'] },
+      { name: '휴르르의 행복동산', ytUrl: 'https://www.youtube.com/@hyururu', subs: '1.1만', cat: '라이프스타일', tags: ['라이프스타일', '패밀리'] },
+      // ── 뮤직 (11명) ────────────────────────────────────────────
+      { name: 'Jessi', ytUrl: 'https://www.youtube.com/channel/UCN2bQLTTvNPZWCWU5TYghKA', subs: '414만', cat: '뮤직', tags: ['뮤직', 'K-POP'] },
+      { name: 'HyunA', ytUrl: 'https://www.youtube.com/channel/UC0uTcuuOtUFwtn9aKUVGjXg', subs: '307만', cat: '뮤직', tags: ['뮤직', 'K-POP'] },
+      { name: '임영웅', ytUrl: 'https://www.youtube.com/channel/UC3WZlO2Zl8NE1yIUgtwUtQw', subs: '164만', cat: '뮤직', tags: ['뮤직', 'K-POP'] },
+      { name: 'Megan Moon', ytUrl: 'https://www.youtube.com/channel/UCYpLOJi7euZwhv6osUgzQ5w', subs: '89만', cat: '뮤직', tags: ['뮤직', '글로벌'] },
+      { name: '에픽하이', ytUrl: 'https://www.youtube.com/@OfficialEpikHigh', subs: '86만', cat: '뮤직', tags: ['뮤직', '힙합'] },
+      { name: 'Koreos', ytUrl: 'https://www.youtube.com/channel/UCniTzJFGV-kvy2GuXQPvdnQ', subs: '66만', cat: '뮤직', tags: ['뮤직', '댄스'] },
+      { name: 'Josh & Bamui', ytUrl: 'https://www.youtube.com/channel/UC22gayxEPsQLhZXpHDjS8Qg', subs: '63만', cat: '뮤직', tags: ['뮤직'] },
+      { name: '탬탬버린', ytUrl: 'https://www.youtube.com/channel/UCCA8UWUW80iHqK9ymdjRwPg', subs: '50만', cat: '뮤직', tags: ['뮤직'] },
+      { name: 'EST CREW', ytUrl: 'https://www.youtube.com/@ESTCrew', subs: '49만', cat: '뮤직', tags: ['뮤직', '댄스'] },
+      { name: 'Korea Beatbox TV', ytUrl: 'https://www.youtube.com/channel/UC_iOLp7QqWu1iy5s8Dya2gw', subs: '28만', cat: '뮤직', tags: ['뮤직'] },
+      { name: '미란이 MIRANI', ytUrl: 'https://www.youtube.com/channel/UCcQ3rsk3vO-qaJkWYva5-KQ', subs: '20만', cat: '뮤직', tags: ['뮤직', '힙합'] },
+      // ── 애니메이션 (5명) ──────────────────────────────────────
+      { name: '혀누', ytUrl: 'https://www.youtube.com/channel/UCwxbbUl2rG3gOnMW3PEAFlQ', subs: '58만', cat: '애니메이션', tags: ['애니메이션'] },
+      { name: '누을', ytUrl: 'https://www.youtube.com/channel/UCODXA3XSKEzRFMO7TELZYLw', subs: '24만', cat: '애니메이션', tags: ['애니메이션'] },
+      { name: 'ZZEFF', ytUrl: 'https://www.youtube.com/channel/UCCaysjOY4rsXZyvyPVTfFIg', subs: '21만', cat: '애니메이션', tags: ['애니메이션'] },
+      { name: '큔도', ytUrl: 'https://www.youtube.com/channel/UCcIYIr1MflLmVMmZfcp8u8A', subs: '13만', cat: '애니메이션', tags: ['애니메이션'] },
+      { name: '워터크라운', ytUrl: 'https://www.youtube.com/channel/UCbj-6Or6kIXE5e4kxwu04iQ', subs: '11만', cat: '애니메이션', tags: ['애니메이션'] },
+      // ── 테크 (1명) ────────────────────────────────────────────
+      { name: '오라잇 스튜디오', ytUrl: 'https://www.youtube.com/@AIT', subs: '63.5만', cat: '테크', tags: ['테크'] },
+      // ── 자동차 (2명) ──────────────────────────────────────────
+      { name: 'mediaAUTO 미디어오토', ytUrl: 'https://www.youtube.com/channel/UCT29dZNPg6exiMyMrVLL0fg', subs: '43.3만', cat: '자동차', tags: ['자동차'] },
+      { name: '안오준TV', ytUrl: 'https://www.youtube.com/channel/UCX62PLc24ML_-tQ3fVPa2tQ', subs: '16.0만', cat: '자동차', tags: ['자동차'] },
+      // ── 미디어 (3명) ──────────────────────────────────────────
+      { name: '고성국TV', ytUrl: 'https://www.youtube.com/channel/UCM8BcGB6BWKq3utIMhGKnUA', subs: '104만', cat: '미디어', tags: ['미디어'] },
+      { name: '안구정화TV', ytUrl: 'https://www.youtube.com/channel/UCaPQb6zHlBXzdMW_QzKh1Kw', subs: '140만', cat: '미디어', tags: ['미디어'] },
+      { name: 'Yannie Kim', ytUrl: 'https://www.youtube.com/channel/UCjjTEirHjvTOOAMZEmRjHZg', subs: '47만', cat: '미디어', tags: ['미디어', '글로벌'] },
     ];
 
     const PALETTE = ['#FF2D9B', '#E8230A', '#1A47C8', '#F59E0B', '#10B981', '#8B5CF6', '#0891B2'];
 
+    // 채널 ID → 프로필 이미지 URL 캐시 (세션 유지)
+    const avatarCache = {};
+
     function getInitialColor(name) {
       return PALETTE[name.charCodeAt(0) % PALETTE.length];
+    }
+
+    // ytUrl에서 채널 ID 추출
+    function getChannelId(ytUrl) {
+      const m = ytUrl.match(/\/channel\/(UC[A-Za-z0-9_-]{22})/);
+      return m ? m[1] : null;
+    }
+
+    // ytUrl에서 핸들 또는 user 추출
+    function getChannelHandle(ytUrl) {
+      let m = ytUrl.match(/youtube\.com\/@([^/?#]+)/);
+      if (m) return '@' + m[1].replace(/\/$/, '');
+      m = ytUrl.match(/youtube\.com\/user\/([^/?#]+)/);
+      if (m) return m[1];
+      m = ytUrl.match(/youtube\.com\/c\/([^/?#]+)/);
+      if (m) return m[1];
+      return null;
+    }
+
+    // YouTube RSS XML에서 yt3 프로필 이미지 URL 파싱
+    function parseAvatarFromXML(xmlText) {
+      // <media:thumbnail url="https://yt3.ggpht.com/..." 패턴
+      const patterns = [
+        /url="(https:\/\/yt3\.ggpht\.com\/[^"]+)"/,
+        /url="(https:\/\/yt3\.googleusercontent\.com\/[^"]+)"/,
+        /<thumbnail url="(https:\/\/yt3[^"]+)"/,
+      ];
+      for (const re of patterns) {
+        const m = xmlText.match(re);
+        if (m) {
+          // 크기 파라미터를 240px로 정규화
+          return m[1].replace(/=s\d+-[^"&\s]*/, '=s240-c-k-c0x00ffffff-no-rj');
+        }
+      }
+      return null;
+    }
+
+    // 프록시를 통한 YouTube RSS fetch (여러 프록시 순차 시도)
+    async function fetchWithProxy(url) {
+      const proxies = [
+        (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+        (u) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+        (u) => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+      ];
+      for (const makeUrl of proxies) {
+        try {
+          const resp = await fetch(makeUrl(url), { signal: AbortSignal.timeout(5000) });
+          if (!resp.ok) continue;
+          const data = await resp.json().catch(() => null);
+          if (data) {
+            // allorigins 형식: { contents: "..." }
+            if (typeof data.contents === 'string') return data.contents;
+            // codetabs 형식: 직접 텍스트
+          }
+          const text = await resp.text().catch(() => '');
+          if (text) return text;
+        } catch { /* 다음 프록시 시도 */ }
+      }
+      return null;
+    }
+
+    // 채널 ID로 RSS에서 프로필 이미지 가져오기
+    async function fetchAvatarByChannelId(channelId) {
+      if (avatarCache[channelId]) return avatarCache[channelId];
+      const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+      const xml = await fetchWithProxy(rssUrl);
+      if (xml) {
+        const url = parseAvatarFromXML(xml);
+        if (url) { avatarCache[channelId] = url; return url; }
+      }
+      return null;
+    }
+
+    // 핸들/user로 채널 페이지에서 채널 ID 추출 후 RSS 접근
+    async function fetchAvatarByHandle(handle, fullUrl) {
+      const cacheKey = handle;
+      if (avatarCache[cacheKey]) return avatarCache[cacheKey];
+      // 채널 페이지 HTML에서 channelId 추출
+      const pageHtml = await fetchWithProxy(fullUrl);
+      if (pageHtml) {
+        const idMatch = pageHtml.match(/"channelId":"(UC[A-Za-z0-9_-]{22})"/);
+        if (idMatch) {
+          const url = await fetchAvatarByChannelId(idMatch[1]);
+          if (url) { avatarCache[cacheKey] = url; return url; }
+        }
+        // 채널 페이지 og:image에서 직접 추출 시도
+        const imgMatch = pageHtml.match(/"og:image" content="(https:\/\/yt3[^"]+)"/);
+        if (imgMatch) {
+          const url = imgMatch[1].replace(/=s\d+-[^"&\s]*/, '=s240-c-k-c0x00ffffff-no-rj');
+          avatarCache[cacheKey] = url; return url;
+        }
+      }
+      return null;
+    }
+
+    // 카드 이미지 요소 업데이트
+    function applyAvatar(imgEl, url) {
+      if (!imgEl || !url) return;
+      imgEl.src = url;
+      imgEl.onload = () => { imgEl.style.opacity = '1'; };
+      imgEl.onerror = () => { imgEl.style.opacity = '0'; };
     }
 
     function renderCreators(activeCat) {
       const grid = document.getElementById('creators-grid');
       const list = activeCat === 'all' ? creatorsData : creatorsData.filter(c => c.cat === activeCat);
 
-      grid.innerHTML = list.map(c => {
-        const avatarUrl = c.img ? `https://unavatar.io/youtube/${c.img}` : null;
+      grid.innerHTML = list.map((c, i) => {
         const color = getInitialColor(c.name);
         const initial = c.name[0];
+        const safeId = 'av_' + i + '_' + c.name.replace(/[^a-zA-Z0-9]/g, '');
 
         return `
         <a href="${c.ytUrl}" target="_blank" rel="noopener" class="creator-card">
           <div class="creator-img-wrap">
-            ${avatarUrl ? `<img src="${avatarUrl}" alt="${c.name}" loading="lazy" onerror="this.style.opacity=0">` : ''}
+            <img id="${safeId}" src="" alt="${c.name}" loading="lazy" style="opacity:0" onerror="this.style.opacity=0">
             <div class="creator-initial" style="background:${color}">${initial}</div>
           </div>
           <div class="creator-name">${c.name}</div>
@@ -1056,6 +1328,26 @@
           <div class="creator-tags">${c.tags.slice(0, 2).map(t => `<span>${t}</span>`).join('')}</div>
         </a>`;
       }).join('');
+
+      // 비동기로 프로필 이미지 로딩
+      list.forEach(async (c, i) => {
+        const safeId = 'av_' + i + '_' + c.name.replace(/[^a-zA-Z0-9]/g, '');
+        const imgEl = document.getElementById(safeId);
+        if (!imgEl) return;
+
+        const channelId = getChannelId(c.ytUrl);
+        if (channelId) {
+          const url = await fetchAvatarByChannelId(channelId);
+          applyAvatar(imgEl, url);
+        } else {
+          const handle = getChannelHandle(c.ytUrl);
+          if (handle) {
+            const cleanUrl = c.ytUrl.replace(/\/$/, '').split('?')[0];
+            const url = await fetchAvatarByHandle(handle, cleanUrl);
+            applyAvatar(imgEl, url);
+          }
+        }
+      });
     }
 
     function filterCreators(btn, cat) {
