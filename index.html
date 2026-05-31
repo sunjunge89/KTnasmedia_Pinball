@@ -168,6 +168,16 @@
       opacity: .8;
     }
 
+    .nav-cta-spacer {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 13px;
+      letter-spacing: 0.6px;
+      visibility: hidden;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
     /* ─── HERO ───────────────────────────────────────────────── */
     .hero {
       position: relative;
@@ -3634,7 +3644,8 @@
       <li><a href="#" id="nav-contact" onclick="showSection('contact');return false;">Case Study</a></li>
     </ul>
 
-    <a href="#" class="nav-cta" onclick="handleDownload();return false;">Download Doc</a>
+    <div class="nav-cta-spacer"></div>
+
   </nav>
 
   <!-- ─── HERO ─────────────────────────────────────────────────── -->
