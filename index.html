@@ -1251,7 +1251,7 @@
 
     .prod-best-use-img:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
     }
 
     /* 피처 카드 */
@@ -1277,7 +1277,7 @@
 
     .prod-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.10);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
     }
 
     .prod-card-tag {
@@ -1507,14 +1507,17 @@
 
     .cs-sub-title {
       font-family: 'DM Sans', sans-serif;
-      font-size: clamp(13px, 1.1vw, 15px);
-      color: #666;
-      line-height: 1.7;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.85;
+      max-width: 900px;
+      margin-bottom: 16px;
+      word-break: keep-all;
     }
 
     .cs-sub-title strong {
       color: #555;
-      font-weight: 700;
+      font-weight: 400;
     }
 
     .cs-case-title {
@@ -3273,7 +3276,7 @@
 
     .prod-what-textbox-body:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.10);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
     }
 
     .prod-what-textbox-body strong {
@@ -4179,9 +4182,9 @@
         font-family: 'DM Sans', sans-serif;
         font-size: 11px;
         font-weight: 600;
-        letter-spacing: 0.18em;
-        color: #999;
-        margin-bottom: 18px;
+        letter-spacing: 0.2em;
+        color: var(--red);
+        margin-bottom: 10px;
         text-transform: uppercase;
       }
 
@@ -4202,19 +4205,6 @@
         max-width: 900px;
         margin-bottom: 16px;
         word-break: keep-all;
-      }
-
-      .proc-subtitle-highlight {
-        display: inline-block;
-        margin-top: 12px;
-        font-size: 13.5px;
-        font-weight: 700;
-        color: #FF9900;
-        background: rgba(255, 153, 0, 0.08);
-        border-left: 3px solid #FF9900;
-        padding: 8px 14px;
-        border-radius: 0 8px 8px 0;
-        line-height: 1.7;
       }
 
       /* Legend pills */
@@ -4239,7 +4229,7 @@
         border: 2px solid #e0e0e0;
         background: #fff;
         color: #222;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       }
 
       .proc-legend-pill .dot {
@@ -4249,8 +4239,13 @@
         flex-shrink: 0;
       }
 
-      .proc-legend-pill.nas-pill .dot { background: #0A0A0A; }
-      .proc-legend-pill.pb-pill .dot  { background: #FF9900; }
+      .proc-legend-pill.nas-pill .dot {
+        background: #0A0A0A;
+      }
+
+      .proc-legend-pill.pb-pill .dot {
+        background: #FF9900;
+      }
 
       /* ── CARDS GRID ── */
       .proc-cards {
@@ -4275,7 +4270,7 @@
 
       .proc-card:hover {
         transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 24px 56px rgba(0,0,0,0.14);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.14);
         border-color: #c0c0c0;
       }
 
@@ -4346,8 +4341,13 @@
         border-radius: 50%;
       }
 
-      .nas-card .badge-dot { background: #ffffff; }
-      .pb-card  .badge-dot { background: rgba(255,255,255,0.7); }
+      .nas-card .badge-dot {
+        background: #ffffff;
+      }
+
+      .pb-card .badge-dot {
+        background: rgba(255, 255, 255, 0.7);
+      }
 
       /* Step number */
       .proc-card-step-num {
@@ -4359,7 +4359,9 @@
         margin-bottom: 8px;
       }
 
-      .pb-card .proc-card-step-num { color: rgba(0,0,0,0.3); }
+      .pb-card .proc-card-step-num {
+        color: rgba(0, 0, 0, 0.3);
+      }
 
       /* Title */
       .proc-card-title {
@@ -4374,7 +4376,9 @@
         overflow-wrap: break-word;
       }
 
-      .pb-card .proc-card-title { color: var(--black); }
+      .pb-card .proc-card-title {
+        color: var(--black);
+      }
 
       /* English subtitle */
       .proc-card-en {
@@ -4387,7 +4391,9 @@
         margin-bottom: 20px;
       }
 
-      .pb-card .proc-card-en { color: rgba(0,0,0,0.35); }
+      .pb-card .proc-card-en {
+        color: rgba(0, 0, 0, 0.35);
+      }
 
       /* Divider */
       .proc-card-divider {
@@ -4396,7 +4402,9 @@
         margin-bottom: 20px;
       }
 
-      .pb-card .proc-card-divider { background: rgba(0,0,0,0.12); }
+      .pb-card .proc-card-divider {
+        background: rgba(0, 0, 0, 0.12);
+      }
 
       /* Description */
       .proc-card-desc {
@@ -4405,7 +4413,9 @@
         color: #555;
       }
 
-      .pb-card .proc-card-desc { color: rgba(0,0,0,0.6); }
+      .pb-card .proc-card-desc {
+        color: rgba(0, 0, 0, 0.6);
+      }
 
       /* ── DURATION ROW ── */
       .proc-timing-row {
@@ -4459,7 +4469,7 @@
       }
 
       .proc-card.both-card:hover {
-        box-shadow: 0 24px 56px rgba(0,0,0,0.14);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.14);
         border-color: #b0b0ac;
       }
 
@@ -4502,8 +4512,13 @@
         flex-shrink: 0;
       }
 
-      .nas-both .badge-dot-b { background: #ffffff; }
-      .pb-both  .badge-dot-b { background: #ffffff; }
+      .nas-both .badge-dot-b {
+        background: #ffffff;
+      }
+
+      .pb-both .badge-dot-b {
+        background: #ffffff;
+      }
 
       .badge-both-sep {
         font-family: 'Figtree', sans-serif;
@@ -4540,15 +4555,31 @@
       }
 
       @media (max-width: 1024px) {
-        #section-process { padding: 80px 40px 100px; }
-        .proc-cards { grid-template-columns: repeat(2, 1fr); }
-        .proc-timing-row { grid-template-columns: repeat(2, 1fr); }
+        #section-process {
+          padding: 80px 40px 100px;
+        }
+
+        .proc-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .proc-timing-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       @media (max-width: 640px) {
-        #section-process { padding: 60px 24px 80px; }
-        .proc-cards { grid-template-columns: 1fr; }
-        .proc-timing-row { grid-template-columns: 1fr; }
+        #section-process {
+          padding: 60px 24px 80px;
+        }
+
+        .proc-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .proc-timing-row {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
 
@@ -4556,10 +4587,11 @@
 
       <!-- Header -->
       <div class="proc-header">
-        <p class="proc-eyebrow">HOW WE WORK</p>
+        <p class="proc-eyebrow">PROCESS</p>
         <h2 class="proc-title">크리에이터 파트너십 애즈<br>진행 프로세스</h2>
-        <p class="proc-subtitle">나스미디어와 핀볼이 광고주와 크리에이터를 연결해 제휴 문의부터 콘텐츠 기획, 크리에이터 섭외, 계약, 제작·게시, 광고 집행까지<br>전 과정을 단계별로 지원하는 크리에이터 파트너십 광고 프로세스입니다.<br><br>캠페인의 안정적인 진행을 위해 <strong style="color: var(--black); font-weight: 800;">최소 4주 전 요청을 권장</strong>드립니다.</p>
-        <span class="proc-subtitle-highlight">예상 진행 기간은 약 4~5주이며, 캠페인 및 크리에이터 컨디션에 따라 변동될 수 있습니다.</span>
+        <p class="proc-subtitle">나스미디어와 핀볼이 광고주와 크리에이터를 연결해 제휴 문의부터 콘텐츠 기획, 크리에이터 섭외, 계약, 제작·게시, 광고 집행까지<br>전 과정을 단계별로
+          지원하는 크리에이터 파트너십 광고 프로세스입니다.<br>캠페인의 안정적인 진행을 위해 <strong style="color: var(--black); font-weight: 800;">최소 4주 전
+            요청을 권장</strong>드립니다.</p>
       </div>
 
       <!-- Legend -->
@@ -4571,6 +4603,8 @@
           <span class="dot"></span>핀볼 담당
         </div>
       </div>
+      <p class="proc-subtitle" style="margin-top: -36px; margin-bottom: 52px;">예상 진행 기간은 약 4~5주이며, 캠페인 및 크리에이터 컨디션에 따라
+        변동될 수 있습니다.</p>
 
       <!-- Cards: 8-column single row -->
       <div class="proc-cards" style="grid-template-columns: repeat(8, 1fr); margin-bottom: 48px;">
@@ -4579,7 +4613,7 @@
           <div class="proc-card-watermark">01</div>
           <div class="proc-card-badge"><span class="badge-dot"></span>KT Nasmedia</div>
           <div class="proc-card-step-num">STEP 01</div>
-          <div class="proc-card-title">제휴 문의 &amp; 광고 제안</div>
+          <div class="proc-card-title">제휴 문의<br>&amp; 광고 제안</div>
           <div class="proc-card-en">Discover & Plan</div>
           <div class="proc-card-divider"></div>
           <div class="proc-card-desc">광고주 문의를 접수하고 캠페인 목표, 타깃, 예산을 파악하여 파트너십 방향을 제안합니다.</div>
@@ -4649,7 +4683,7 @@
           <div class="proc-card-watermark">08</div>
           <div class="proc-card-badge-both">
             <span class="badge-both-item nas-both"><span class="badge-dot-b"></span>KT Nasmedia</span>
-<span class="badge-both-item pb-both"><span class="badge-dot-b"></span>Pinball</span>
+            <span class="badge-both-item pb-both"><span class="badge-dot-b"></span>Pinball</span>
           </div>
           <div class="proc-card-step-num">STEP 08</div>
           <div class="proc-card-title">분석 &amp; 피드백</div>
@@ -4659,8 +4693,6 @@
         </div>
 
       </div>
-
-
 
     </div>
   </section>
