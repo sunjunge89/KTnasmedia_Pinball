@@ -819,6 +819,200 @@
       display: none !important;
     }
 
+    /* ─── CREATORS SECTION ──────────────────────────────────── */
+    #section-creators {
+      padding: 80px 40px 100px;
+      background: #fff;
+      min-height: calc(100vh - 68px);
+    }
+
+    .cr-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .cr-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: #999;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .cr-title {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .cr-sub {
+      font-size: 16px;
+      color: #555;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── Filter tabs ── */
+    .cr-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 52px;
+    }
+
+    .cr-filter-btn {
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      padding: 12px 24px;
+      border: 2px solid #e8e8e8;
+      background: #fff;
+      color: #666;
+      cursor: pointer;
+      border-radius: 999px;
+      transition: all .22s;
+      white-space: nowrap;
+    }
+
+    .cr-filter-btn:hover {
+      border-color: var(--black);
+      color: var(--black);
+      background: #f8f8f8;
+    }
+
+    .cr-filter-btn.active {
+      background: var(--black);
+      color: #fff;
+      border-color: var(--black);
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    }
+
+    /* ── Grid ── */
+    .cr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ── Card ── */
+    .cr-card {
+      background: #fff;
+      border: 1.5px solid #ebebeb;
+      border-radius: 20px;
+      padding: 36px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform .22s, box-shadow .22s, border-color .22s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cr-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.1);
+      border-color: #d0d0d0;
+    }
+
+    .cr-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 20px;
+      border: 3px solid #f0f0f0;
+      background: #f5f5f5;
+    }
+
+    .cr-name {
+      font-family: 'Figtree', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 12px;
+      line-height: 1.3;
+      word-break: keep-all;
+    }
+
+    .cr-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .cr-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 5px 13px;
+      background: #f2f2f2;
+      color: #444;
+      border-radius: 999px;
+      border: 1px solid #e8e8e8;
+    }
+
+    .cr-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .cr-stat {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .cr-stat-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .cr-stat-yt { color: #E8230A; }
+    .cr-stat-tt { color: #111; }
+
+    .cr-card-link {
+      position: absolute;
+      inset: 0;
+    }
+
+    .cr-count {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      #section-creators { padding: 60px 20px 80px; }
+      .cr-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+      .cr-avatar { width: 110px; height: 110px; }
+    }
+
     /* ─── PLACEHOLDER SECTIONS ───────────────────────────────── */
     .placeholder-wrap {
       min-height: calc(100vh - 68px);
@@ -3746,6 +3940,29 @@
   </section>
 
 
+  <!-- ─── CREATORS SECTION ────────────────────────────────────────────── -->
+  <section id="section-creators" class="page-section">
+    <div class="cr-header">
+      <p class="cr-eyebrow">PINBALL × NASMEDIA</p>
+      <h2 class="cr-title">크리에이터</h2>
+      <p class="cr-sub">핀볼코리아가 함께하는 유튜브 크리에이터들을 소개합니다.</p>
+    </div>
+
+    <div class="cr-filters">
+      <button class="cr-filter-btn active" data-cat="all" onclick="filterCreators('all')">전체</button>
+      <button class="cr-filter-btn" data-cat="beauty" onclick="filterCreators('beauty')">뷰티 &amp; 라이프스타일</button>
+      <button class="cr-filter-btn" data-cat="gaming" onclick="filterCreators('gaming')">게임 &amp; 스트리밍</button>
+      <button class="cr-filter-btn" data-cat="music" onclick="filterCreators('music')">음악</button>
+      <button class="cr-filter-btn" data-cat="entertainment" onclick="filterCreators('entertainment')">엔터테인먼트 &amp; 미디어</button>
+      <button class="cr-filter-btn" data-cat="animation" onclick="filterCreators('animation')">애니메이션</button>
+      <button class="cr-filter-btn" data-cat="sports" onclick="filterCreators('sports')">스포츠</button>
+      <button class="cr-filter-btn" data-cat="shortform" onclick="filterCreators('shortform')">숏폼</button>
+    </div>
+
+    <div class="cr-grid" id="crGrid"></div>
+    <p class="cr-count" id="crCount"></p>
+  </section>
+
   <!-- ─── CASE STUDY SECTION ──────────────────────────────────────────── -->
   <section id="section-contact" class="page-section">
     <div class="cs-wrap">
@@ -3956,6 +4173,7 @@
        about / product / roles / process / creators / contact
     ════════════════════════════════════════════════════════════ */
     const NAV_IDS = ['about', 'product', 'roles', 'process', 'creators', 'contact'];
+    // section-creators 동적 생성 필요 없음 - HTML에 이미 포함됨
     const hero = document.querySelector('.hero');
 
     function showSection(id) {
@@ -3982,6 +4200,7 @@
 
       // creators 진입 시 그리드 렌더
       if (id === 'creators') {
+        renderCreators('all');
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3991,6 +4210,143 @@
     (function init() {
       showSection('about');
     })();
+
+    /* ════════════════════════════════════════════════════════════
+       CREATORS DATA
+    ════════════════════════════════════════════════════════════ */
+    const BASE = 'https://playpinball.co.kr/collab/images/creator/';
+    const YT_ICON = `<svg class="cr-stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+    const TT_ICON = `<svg class="cr-stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.26 8.26 0 0 0 4.83 1.55V6.79a4.85 4.85 0 0 1-1.06-.1z"/></svg>`;
+
+    const CREATORS = [
+      // ── 뷰티 & 라이프스타일 ──────────────────────────────────────
+      { name: 'Byungari / 병아리언니', img: 'Qnl1bmdhcmkgLyDrs5HslYTrpqzslrjri4g=.jpg', yt: '980만명', tt: '460만명', url: 'https://www.youtube.com/channel/UC8TCA15kPzNw9ppRaVZ937w', cats: ['beauty'] },
+      { name: 'Edward Avila', img: 'RWR3YXJkIEF2aWxh.jpg', yt: '156만명', url: 'https://www.youtube.com/channel/UCNM5-NRrDxL0PWC5H52smaQ', cats: ['beauty'] },
+      { name: '이수티븨isuTV', img: 'UCXoQ90CCc6tkzIUOyjAZayA.jpg', yt: '12만명', url: 'https://www.youtube.com/channel/UCXoQ90CCc6tkzIUOyjAZayA', cats: ['beauty'] },
+      { name: '안구정화TV, Your Korean Friend', img: 'channels4_profile-14.jpg', yt: '140만명', url: 'https://www.youtube.com/channel/UCaPQb6zHlBXzdMW_QzKh1Kw', cats: ['beauty'] },
+      { name: '비타민신지니 VitaminJINY', img: '67mE7YOA66-87Iug7KeA64uIIFZpdGFtaW5KSU5Z.jpg', yt: '120만명', url: 'https://www.youtube.com/channel/UC9trbyGOOjJmMea3w6c-e2A', cats: ['beauty'] },
+      { name: 'BIGSIS 빅씨스', img: 'QklHU0lTIOu5heyUqOyKpA==.jpg', yt: '71만명', url: 'https://www.youtube.com/channel/UCfDkQiPchwM0F2SkHWl5JYQ', cats: ['beauty'] },
+      { name: 'Yoo True', img: 'WW9vIFRydWU=.jpg', yt: '56만명', url: 'https://www.youtube.com/user/yootruebeutyroom', cats: ['beauty'] },
+      { name: 'Kelly Kim', img: 'WW91amlu7Jyg7KeE.jpg', yt: '49만명', url: 'https://www.youtube.com/channel/UCG8tU5lHTYV2SJVxzB-40GA', cats: ['beauty'] },
+      { name: 'SangAhTube 상아튜브', img: 'U2FuZ0FoVHViZSDsg4HslYTtipzruIw=.jpg', yt: '19만명', url: 'https://www.youtube.com/channel/UCwumkIEZ97nsw0Anv90zehQ', cats: ['beauty'] },
+      { name: '클레어', img: '@Studying.Mommy.Claire.jpg', yt: '12만명', url: 'https://www.youtube.com/@Studying.Mommy.Claire', cats: ['beauty'] },
+      { name: '조이차니JoyChan', img: '7KGw7J207LCo64uISm95Q2hhbg==.jpg', yt: '24만명', url: 'https://www.youtube.com/channel/UC93s-VhhKysH8nenm_-ZR0Q', cats: ['beauty'] },
+      { name: '션님 SHAWN', img: '7IWY64uYIFNIQVdO.jpg', yt: '3만명', tt: '51.6만명', url: 'https://www.youtube.com/channel/UCW2l319Py0yPCISabXDVOqA', cats: ['beauty', 'shortform'] },
+      { name: '한식푸우 Korean food', img: '7ZWc7Iud7ZG47JqwIEtvcmVhbiBmb29k.jpg', yt: '72만명', url: 'https://www.youtube.com/channel/UC1Wq-BQZblFGbGgDAoCwrmA', cats: ['beauty'] },
+      { name: 'Yannie Kim', img: 'WWFubmllIEtpbQ==.jpg', yt: '47만명', url: 'https://www.youtube.com/channel/UCjjTEirHjvTOOAMZEmRjHZg', cats: ['beauty'] },
+      { name: '단앤조엘', img: '64uo7JWk7KGw7JeY.jpg', yt: '31만명', url: 'https://www.youtube.com/channel/UCQstdMawQNSGBTlaP8FyIFA', cats: ['beauty'] },
+      { name: '에이핏', img: 'channels4_profile.jpg', yt: '76만명', url: 'https://www.youtube.com/channel/UCRGZCFuFCwp2D_YKByrqRfw', cats: ['beauty', 'sports'] },
+      { name: '릴리옌젤lilyyengel', img: '%eb%a6%b4%eb%a6%ac%ec%98%8c%ec%a0%a4lilyyengel.jpg', yt: '23만명', url: 'https://www.youtube.com/channel/UCnVaTE5_mmeVQmogfoMxlnw', cats: ['beauty'] },
+      { name: 'Megan Moon', img: 'TWVnYW4gTW9vbg==.jpg', yt: '89만명', url: 'https://www.youtube.com/channel/UCYpLOJi7euZwhv6osUgzQ5w', cats: ['beauty', 'music'] },
+      { name: '혀누', img: '7ZiA64iE.jpg', yt: '58만명', url: 'https://www.youtube.com/channel/UCwxbbUl2rG3gOnMW3PEAFlQ', cats: ['beauty'] },
+      { name: '누을', img: '64iE7J2E.jpg', yt: '24만명', url: 'https://www.youtube.com/channel/UCODXA3XSKEzRFMO7TELZYLw', cats: ['beauty'] },
+      { name: '나나양', img: '@NANAYANG.jpg', yt: '17만명', url: 'https://www.youtube.com/@NANAYANG', cats: ['beauty'] },
+      { name: '미란이 MIRANI', img: 'UCcQ3rsk3vO-qaJkWYva5-KQ.jpg', yt: '20만명', url: 'https://www.youtube.com/channel/UCcQ3rsk3vO-qaJkWYva5-KQ', cats: ['beauty'] },
+      { name: '탬탬버린', img: 'UCCA8UWUW80iHqK9ymdjRwPg.jpg', yt: '50만명', url: 'https://www.youtube.com/channel/UCCA8UWUW80iHqK9ymdjRwPg', cats: ['beauty'] },
+      { name: 'YouTube지누', img: 'WW91VHViZeyngOuIhA==.jpg', yt: '27만명', url: 'https://www.youtube.com/channel/UCJGww2K__Q3y-MtDi0XWH2w', cats: ['beauty'] },
+      { name: '삐부찡', img: 'UCWbbrLELoBRo-8KG1D9m4HQ.jpg', yt: '16만명', url: 'https://www.youtube.com/channel/UCWbbrLELoBRo-8KG1D9m4HQ', cats: ['beauty'] },
+
+      // ── 게임 & 스트리밍 ─────────────────────────────────────────
+      { name: '깝도이', img: '6rmd64-E7J20.jpg', yt: '23만명', url: 'https://www.youtube.com/channel/UCqVkQsNin4MdGFrWvzFVOKw', cats: ['gaming'] },
+      { name: '캡틴김수호', img: '7Lqh7Yu06rmA7IiY7Zi4.jpg', yt: '21만명', url: 'https://www.youtube.com/channel/UCYaFxuv97e0qSx1MU9FvhGg', cats: ['gaming'] },
+      { name: '앤새ANDSADLY', img: '7JWk7IOIQU5EU0FETFk=.jpg', yt: '16만명', url: 'https://www.youtube.com/channel/UCZQvXBMUT7ZMM5i9w9ZFp_Q', cats: ['gaming'] },
+      { name: '나민', img: '64KY66-8.jpg', yt: '11만명', url: 'https://www.youtube.com/channel/UCMY6poKyd6VBUtLywAcoy1g', cats: ['gaming'] },
+      { name: '새우새우', img: '7IOI7Jqw7IOI7Jqw.jpg', yt: '9만명', url: 'https://www.youtube.com/user/FishBungUh', cats: ['gaming'] },
+      { name: '즐기는남자들', img: '7KaQ6riw64qU64Ko7J6Q65Ok.jpg', yt: '9만명', url: 'https://www.youtube.com/channel/UCP1rKrteinsrN5yxtF435EA', cats: ['gaming'] },
+      { name: '김나성', img: '6rmA64KY7ISx.jpg', yt: '5만명', url: 'https://www.youtube.com/channel/UCRjQDHdSObypL53Lez8XTBA', cats: ['gaming'] },
+      { name: '귀월 유튜브', img: '6reA7JuUIOycoO2KnOu4jA==.jpg', yt: '5만명', url: 'https://www.youtube.com/channel/UCSGYG1lKQVCPxxr-2-Q3dMg', cats: ['gaming'] },
+      { name: '까까오징', img: '6rmM6rmM7Jik7KeV.jpg', yt: '5만명', url: 'https://www.youtube.com/channel/UCFnExCWpSmu4yzKzKmVsu1g', cats: ['gaming'] },
+      { name: '치리스', img: '@chirisu.jpg', yt: '4.5만명', url: 'https://www.youtube.com/@chirisu', cats: ['gaming'] },
+      { name: 'ZZEFF', img: 'WlpFRkY=.jpg', yt: '21만명', url: 'https://www.youtube.com/channel/UCCaysjOY4rsXZyvyPVTfFIg', cats: ['gaming'] },
+      { name: '큔도', img: '7YGU64-E.jpg', yt: '13만명', url: 'https://www.youtube.com/channel/UCcIYIr1MflLmVMmZfcp8u8A', cats: ['gaming'] },
+      { name: '워터크라운', img: '7JuM7YSw7YGs65287Jq0.jpg', yt: '11만명', url: 'https://www.youtube.com/channel/UCbj-6Or6kIXE5e4kxwu04iQ', cats: ['gaming'] },
+
+      // ── 음악 ────────────────────────────────────────────────────
+      { name: 'BeatboxJCOP', img: 'QmVhdGJveEpDT1A=.jpg', yt: '3140만명', tt: '1590만명', url: 'https://www.youtube.com/channel/UCdX5KXiCTPYWYZscfphgQ4g', cats: ['music', 'shortform'] },
+      { name: 'Hiss', img: 'SGlzcw==.jpg', yt: '46만명', tt: '350만명', url: 'https://www.youtube.com/channel/UCF02fs8-f8AwBAEvoSdUImg', cats: ['music', 'shortform'] },
+      { name: 'Korea Beatbox TV', img: 'S29yZWEgQmVhdGJveCBUVg==.jpg', yt: '28만명', tt: '1.3만명', url: 'https://www.youtube.com/channel/UC_iOLp7QqWu1iy5s8Dya2gw', cats: ['music'] },
+      { name: 'HyunA', img: 'HyunA.jpeg', yt: '307만명', url: 'https://www.youtube.com/channel/UC0uTcuuOtUFwtn9aKUVGjXg', cats: ['music'] },
+      { name: 'Jessi', img: 'jessi.jpg', yt: '414만명', url: 'https://www.youtube.com/channel/UCN2bQLTTvNPZWCWU5TYghKA', cats: ['music'] },
+      { name: '임영웅', img: 'UC3WZlO2Zl8NE1yIUgtwUtQw.jpg', yt: '164만명', url: 'https://www.youtube.com/channel/UC3WZlO2Zl8NE1yIUgtwUtQw', cats: ['music'] },
+      { name: '에픽하이', img: '@OfficialEpikHigh.jpg', yt: '86만명', url: 'https://www.youtube.com/@OfficialEpikHigh', cats: ['music'] },
+      { name: 'Koreos', img: 'S29yZW9z.jpg', yt: '66만명', url: 'https://www.youtube.com/channel/UCniTzJFGV-kvy2GuXQPvdnQ', cats: ['music'] },
+      { name: '조싀앤바믜 Josh & Bamui', img: '7KGw7IuA7JWk67CU66-cIEpvc2ggJiBCYW11aQ==.jpg', yt: '63만명', url: 'https://www.youtube.com/channel/UC22gayxEPsQLhZXpHDjS8Qg', cats: ['music'] },
+      { name: 'EST CREW', img: 'RVNUIENSRVc=.jpg', yt: '49만명', tt: '7.2만명', url: 'https://www.youtube.com/@ESTCrew/featured', cats: ['music'] },
+      { name: 'GEMINI OFFICIAL', img: 'GEMINI_OFFICIAL.jpg', yt: '8만명', url: 'https://www.youtube.com/channel/UCO61R65Z4TECnKI0iMXpOEQ', cats: ['music'] },
+      { name: 'BOYCOLD', img: 'UC0qDFA9SZQ07Bxknm2gTrJw.jpg', yt: '1만명', url: 'https://www.youtube.com/channel/UC0qDFA9SZQ07Bxknm2gTrJw', cats: ['music'] },
+      { name: 'SHERO', img: 'U0hFUk8=.jpg', yt: '6만명', tt: '4235명', url: 'https://www.youtube.com/c/SHEROFFICIALS/featured', cats: ['music'] },
+      { name: 'CAIM', img: 'Q0FJTQ==.jpg', yt: '4만명', tt: '6689명', url: 'https://www.youtube.com/channel/UCmhf2FCYGc8c32Le2WXN_FQ', cats: ['music'] },
+      { name: 'MAJESTY TEAM', img: 'TUFKRVNUWSBURUFN.jpg', yt: '13만명', tt: '1.2만명', url: 'https://www.youtube.com/channel/UCidgjROkVT2e4umh2zHEEfQ', cats: ['music'] },
+      { name: '보리보리', img: '67O066as67O066as.jpg', yt: '22만명', url: 'https://www.youtube.com/channel/UCv4iQG6AKdth5irx1iLARfw', cats: ['music'] },
+
+      // ── 엔터테인먼트 & 미디어 ────────────────────────────────────
+      { name: 'Crazy Greapa / 크레이지 그레빠', img: 'crazygreapa.jpg', yt: '2840만명', tt: '1279만명', url: 'https://youtube.com/@crazygreapa', cats: ['entertainment', 'shortform'] },
+      { name: '동네놈들', img: '64-Z64Sk64aI65Ok.jpg', yt: '158만명', url: 'https://www.youtube.com/channel/UCIuFnJrRwHEUcIVtozJnUGA', cats: ['entertainment'] },
+      { name: '고성국TV', img: '6rOg7ISx6rWtVFY=.jpg', yt: '104만명', url: 'https://www.youtube.com/channel/UCM8BcGB6BWKq3utIMhGKnUA', cats: ['entertainment'] },
+      { name: '책읽기좋은날', img: '7LGF7J296riw7KKL7J2A64Kg.jpg', yt: '87만명', url: 'https://www.youtube.com/channel/UC17lvWECf2AWRbqKuCcf4VQ', cats: ['entertainment'] },
+      { name: 'mediaAUTO 미디어오토', img: 'bWVkaWFBVVRPIOuvuOuUlOyWtOyYpO2GoA==.jpg', yt: '34만명', url: 'https://www.youtube.com/channel/UCT29dZNPg6exiMyMrVLL0fg/featured', cats: ['entertainment'] },
+      { name: '안오준TV AhnojunTV', img: '7JWI7Jik7KSAVFYgQWhub2p1blRW.jpg', yt: '14만명', url: 'https://www.youtube.com/channel/UCX62PLc24ML_-tQ3fVPa2tQ', cats: ['entertainment'] },
+      { name: '계향쓰 GH\'S', img: '6rOE7Zal7JOwIEdIJ1M=.jpg', yt: '2200만명', url: 'https://www.youtube.com/c/GHSGHS', cats: ['entertainment', 'shortform'] },
+      { name: '모몽스튜디오', img: 'UCqPAkMXhxk0OwLQS5lw5XqQ.jpg', yt: '3만명', url: 'https://www.youtube.com/channel/UCqPAkMXhxk0OwLQS5lw5XqQ', cats: ['entertainment'] },
+      { name: 'Thais Genaro', img: 'VGhhaXMgR2VuYXJv.jpg', yt: '27만명', url: 'https://www.youtube.com/channel/UCinfiEJkiauuxkvHqIceCXQ', cats: ['entertainment'] },
+      { name: 'Revista KoreaIN', img: 'UmV2aXN0YSBLb3JlYUlO.jpg', yt: '24만명', url: 'https://www.youtube.com/channel/UCk1OYFJxnQypR8zCO2EQTOw', cats: ['entertainment'] },
+      { name: 'J2N 제이투앤', img: 'SjJOIOygnOydtO2IrOyVpA==.jpg', yt: '17만명', url: 'https://www.youtube.com/channel/UCxtx3Q0HGU3BwRMmmdP5WuA', cats: ['entertainment'] },
+      { name: 'SALV AND FAMILY', img: 'RklTSEVSTUFOIFNhbFY=.jpg', yt: '15만명', url: 'https://www.youtube.com/channel/UCZd1JdfS_g0gOYvRtbcyhHA', cats: ['entertainment'] },
+      { name: 'Hello Korea', img: 'SGVsbG8gS29yZWE=.jpg', yt: '35만명', url: 'https://www.youtube.com/@HelloKorea4K', cats: ['entertainment'] },
+      { name: 'Relaxing Time for you', img: 'UmVsYXhpbmcgVGltZSBmb3IgeW91.jpg', yt: '19만명', url: 'https://www.youtube.com/@RelaxingTimeforyou', cats: ['entertainment'] },
+      { name: 'YouTube지누', img: 'UCJGww2K__Q3y-MtDi0XWH2w.jpg', yt: '29만명', url: 'https://www.youtube.com/channel/UCJGww2K__Q3y-MtDi0XWH2w', cats: ['entertainment'] },
+
+      // ── 애니메이션 ───────────────────────────────────────────────
+      { name: '캐릭온 TV', img: '7LqQ66at7JioIFRW.jpg', yt: '241만명', url: 'https://www.youtube.com/channel/UCyn_E0ZE8RNOnYnF3lVaCOQ', cats: ['animation'] },
+      { name: '펑커슨', img: '7Y6R7Luk7Iqo.jpg', yt: '228만명', url: 'https://www.youtube.com/@Jeny_Punker/', cats: ['animation'] },
+
+      // ── 스포츠 ───────────────────────────────────────────────────
+      { name: '에이핏', img: 'channels4_profile.jpg', yt: '76만명', url: 'https://www.youtube.com/channel/UCRGZCFuFCwp2D_YKByrqRfw', cats: ['sports', 'beauty'] },
+    ];
+
+    const CAT_KO = {
+      beauty: '뷰티 & 라이프스타일',
+      gaming: '게임 & 스트리밍',
+      music: '음악',
+      entertainment: '엔터테인먼트 & 미디어',
+      animation: '애니메이션',
+      sports: '스포츠',
+      shortform: '숏폼'
+    };
+
+    let currentCat = 'all';
+
+    function filterCreators(cat) {
+      currentCat = cat;
+      document.querySelectorAll('.cr-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === cat);
+      });
+      renderCreators(cat);
+    }
+
+    function renderCreators(cat) {
+      const grid = document.getElementById('crGrid');
+      const countEl = document.getElementById('crCount');
+      if (!grid) return;
+
+      const list = cat === 'all' ? CREATORS : CREATORS.filter(c => c.cats.includes(cat));
+
+      grid.innerHTML = list.map(c => {
+        const imgSrc = BASE + c.img;
+        const tags = c.cats.map(k => `<span class="cr-tag">${CAT_KO[k] || k}</span>`).join('');
+        const ytStat = c.yt ? `<div class="cr-stat cr-stat-yt">${YT_ICON}<span>${c.yt}</span></div>` : '';
+        const ttStat = c.tt ? `<div class="cr-stat cr-stat-tt">${TT_ICON}<span>${c.tt}</span></div>` : '';
+        return `<div class="cr-card">
+          <a class="cr-card-link" href="${c.url}" target="_blank" rel="noopener" aria-label="${c.name}"></a>
+          <img class="cr-avatar" src="${imgSrc}" alt="${c.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'88\\' height=\\'88\\'><rect fill=\\'%23f0f0f0\\' width=\\'88\\' height=\\'88\\'/><text x=\\'44\\' y=\\'50\\' text-anchor=\\'middle\\' fill=\\'%23bbb\\' font-size=\\'28\\'>👤</text></svg>'">
+          <div class="cr-name">${c.name}</div>
+          <div class="cr-tags">${tags}</div>
+          <div class="cr-stats">${ytStat}${ttStat}</div>
+        </div>`;
+      }).join('');
+
+      countEl.textContent = `총 ${list.length}명의 크리에이터`;
+    }
 
     /* ── Download handler ── */
     const DOCUMENT_URL = '';
