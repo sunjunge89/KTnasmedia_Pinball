@@ -893,7 +893,7 @@
       background: var(--black);
       color: #fff;
       border-color: var(--black);
-      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
     }
 
     /* ── Grid ── */
@@ -922,7 +922,7 @@
 
     .cr-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(0,0,0,.1);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .1);
       border-color: #d0d0d0;
     }
 
@@ -990,8 +990,13 @@
       flex-shrink: 0;
     }
 
-    .cr-stat-yt { color: #E8230A; }
-    .cr-stat-tt { color: #111; }
+    .cr-stat-yt {
+      color: #E8230A;
+    }
+
+    .cr-stat-tt {
+      color: #111;
+    }
 
     .cr-card-link {
       position: absolute;
@@ -1008,9 +1013,19 @@
     }
 
     @media (max-width: 768px) {
-      #section-creators { padding: 60px 20px 80px; }
-      .cr-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-      .cr-avatar { width: 110px; height: 110px; }
+      #section-creators {
+        padding: 60px 20px 80px;
+      }
+
+      .cr-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .cr-avatar {
+        width: 110px;
+        height: 110px;
+      }
     }
 
     /* ─── PLACEHOLDER SECTIONS ───────────────────────────────── */
@@ -3943,9 +3958,9 @@
   <!-- ─── CREATORS SECTION ────────────────────────────────────────────── -->
   <section id="section-creators" class="page-section">
     <div class="cr-header">
-      <p class="cr-eyebrow">PINBALL × NASMEDIA</p>
+
       <h2 class="cr-title">크리에이터</h2>
-      <p class="cr-sub">핀볼코리아가 함께하는 유튜브 크리에이터들을 소개합니다.</p>
+      <p class="cr-sub">핀볼코리아와 함께하는 유튜브 크리에이터들을 소개합니다.</p>
     </div>
 
     <div class="cr-filters">
@@ -3953,7 +3968,8 @@
       <button class="cr-filter-btn" data-cat="beauty" onclick="filterCreators('beauty')">뷰티 &amp; 라이프스타일</button>
       <button class="cr-filter-btn" data-cat="gaming" onclick="filterCreators('gaming')">게임 &amp; 스트리밍</button>
       <button class="cr-filter-btn" data-cat="music" onclick="filterCreators('music')">음악</button>
-      <button class="cr-filter-btn" data-cat="entertainment" onclick="filterCreators('entertainment')">엔터테인먼트 &amp; 미디어</button>
+      <button class="cr-filter-btn" data-cat="entertainment" onclick="filterCreators('entertainment')">엔터테인먼트 &amp;
+        미디어</button>
       <button class="cr-filter-btn" data-cat="animation" onclick="filterCreators('animation')">애니메이션</button>
       <button class="cr-filter-btn" data-cat="sports" onclick="filterCreators('sports')">스포츠</button>
       <button class="cr-filter-btn" data-cat="shortform" onclick="filterCreators('shortform')">숏폼</button>
