@@ -4396,6 +4396,13 @@
         color: rgba(0, 0, 0, 0.3);
       }
 
+      /* Title+En wrapper — fixed height pins divider at consistent position */
+      .proc-card-top-area {
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+      }
+
       /* Title */
       .proc-card-title {
         font-family: 'Figtree', sans-serif;
@@ -4497,13 +4504,13 @@
 
       /* ── BOTH CARD (공동 담당) ── */
       .proc-card.both-card {
-        background: linear-gradient(135deg, #f7f7f5 0%, #efefec 100%);
-        border: 1.5px solid #d8d8d4;
+        background: linear-gradient(135deg, #efefec 0%, #f0c89a 100%);
+        border: 1.5px solid #d4bfa8;
       }
 
       .proc-card.both-card:hover {
         box-shadow: 0 24px 56px rgba(0, 0, 0, 0.14);
-        border-color: #b0b0ac;
+        border-color: #c8b89a;
       }
 
       .proc-card-badge-both {
@@ -4638,14 +4645,16 @@
         </div>
       </div>
       <!-- Cards: 8-column single row -->
-      <div class="proc-cards" style="grid-template-columns: repeat(8, 1fr); margin-bottom: 48px;">
+      <div class="proc-cards" style="grid-template-columns: repeat(7, 1fr); margin-bottom: 48px;">
 
         <div class="proc-card nas-card">
           <div class="proc-card-watermark">01</div>
           <div class="proc-card-badge"><span class="badge-dot"></span>KT Nasmedia</div>
           <div class="proc-card-step-num">STEP 01</div>
-          <div class="proc-card-title">제휴 문의<br>&amp; 광고 제안</div>
-          <div class="proc-card-en">Discover & Plan</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title">제휴 문의<br>&amp; 광고 제안</div>
+            <div class="proc-card-en">Discover & Plan</div>
+          </div>
           <div class="proc-card-divider"></div>
           <div class="proc-card-desc">광고주 문의를 접수하고 캠페인 목표, 타깃, 예산을 파악하여 파트너십 방향을 제안합니다.</div>
         </div>
@@ -4654,8 +4663,10 @@
           <div class="proc-card-watermark">02</div>
           <div class="proc-card-badge"><span class="badge-dot"></span>Pinball</div>
           <div class="proc-card-step-num">STEP 02</div>
-          <div class="proc-card-title">진행 컨설팅</div>
-          <div class="proc-card-en">Consulting</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title">진행 컨설팅</div>
+            <div class="proc-card-en">Consulting</div>
+          </div>
           <div class="proc-card-divider"></div>
           <div class="proc-card-desc">콘텐츠 기획 방향 및 목표에 따른 전략 컨설팅을 제공하여 최적의 광고 플랜을 수립합니다.</div>
         </div>
@@ -4664,61 +4675,61 @@
           <div class="proc-card-watermark">03</div>
           <div class="proc-card-badge"><span class="badge-dot"></span>Pinball</div>
           <div class="proc-card-step-num">STEP 03</div>
-          <div class="proc-card-title">크리에이터 섭외</div>
-          <div class="proc-card-en">Matching</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title">크리에이터<br>섭외&amp;계약</div>
+            <div class="proc-card-en">Matching & Contract</div>
+          </div>
           <div class="proc-card-divider"></div>
-          <div class="proc-card-desc">핀볼의 크리에이터 네트워크를 활용해 캠페인에 최적화된 크리에이터를 매칭하고 섭외합니다.</div>
+          <div class="proc-card-desc">핀볼의 크리에이터 네트워크를 활용해 최적의 크리에이터를 매칭·섭외하고 광고주와의 계약을 체결합니다.</div>
         </div>
 
         <div class="proc-card pb-card">
           <div class="proc-card-watermark">04</div>
           <div class="proc-card-badge"><span class="badge-dot"></span>Pinball</div>
           <div class="proc-card-step-num">STEP 04</div>
-          <div class="proc-card-title">크리에이터와 계약</div>
-          <div class="proc-card-en">Contract</div>
-          <div class="proc-card-divider"></div>
-          <div class="proc-card-desc">광고주와 크리에이터 간 조건을 조율하고 상호 계약을 체결합니다.</div>
-        </div>
-
-        <div class="proc-card pb-card">
-          <div class="proc-card-watermark">05</div>
-          <div class="proc-card-badge"><span class="badge-dot"></span>Pinball</div>
-          <div class="proc-card-step-num">STEP 05</div>
-          <div class="proc-card-title">콘텐츠 제작 &amp; 게시</div>
-          <div class="proc-card-en">Launch</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title">콘텐츠 제작 &amp; 게시</div>
+            <div class="proc-card-en">Launch</div>
+          </div>
           <div class="proc-card-divider"></div>
           <div class="proc-card-desc">PINBALL 인사이트 기반으로 양질의 광고 콘텐츠를 제작하고 크리에이터 채널에 게시합니다.</div>
+        </div>
+
+        <div class="proc-card nas-card">
+          <div class="proc-card-watermark">05</div>
+          <div class="proc-card-badge"><span class="badge-dot"></span>KT Nasmedia</div>
+          <div class="proc-card-step-num">STEP 05</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title" style="font-size: clamp(13px, 1.1vw, 17px);">콘텐츠<br>구글 시스템 링킹</div>
+            <div class="proc-card-en">Linking</div>
+          </div>
+          <div class="proc-card-divider"></div>
+          <div class="proc-card-desc">크리에이터 영상을 구글 광고 시스템에 연동하여 부스트 집행을 준비합니다.</div>
         </div>
 
         <div class="proc-card nas-card">
           <div class="proc-card-watermark">06</div>
           <div class="proc-card-badge"><span class="badge-dot"></span>KT Nasmedia</div>
           <div class="proc-card-step-num">STEP 06</div>
-          <div class="proc-card-title">영상 구글 시스템 링킹</div>
-          <div class="proc-card-en">Linking</div>
-          <div class="proc-card-divider"></div>
-          <div class="proc-card-desc">크리에이터 영상을 구글 광고 시스템에 연동하여 부스트 집행을 준비합니다.</div>
-        </div>
-
-        <div class="proc-card nas-card">
-          <div class="proc-card-watermark">07</div>
-          <div class="proc-card-badge"><span class="badge-dot"></span>KT Nasmedia</div>
-          <div class="proc-card-step-num">STEP 07</div>
-          <div class="proc-card-title">부스트 캠페인 세팅 &amp; 운영</div>
-          <div class="proc-card-en">Campaign</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title">부스트 캠페인<br>세팅&amp;운영</div>
+            <div class="proc-card-en">Campaign</div>
+          </div>
           <div class="proc-card-divider"></div>
           <div class="proc-card-desc">구글 광고 시스템을 통한 부스트 캠페인을 세팅하고 타깃 도달을 극대화하며 운영합니다.</div>
         </div>
 
         <div class="proc-card both-card">
-          <div class="proc-card-watermark">08</div>
+          <div class="proc-card-watermark">07</div>
           <div class="proc-card-badge-both">
             <span class="badge-both-item nas-both"><span class="badge-dot-b"></span>KT Nasmedia</span>
             <span class="badge-both-item pb-both"><span class="badge-dot-b"></span>Pinball</span>
           </div>
-          <div class="proc-card-step-num">STEP 08</div>
-          <div class="proc-card-title">분석 &amp; 피드백</div>
-          <div class="proc-card-en">Feedback</div>
+          <div class="proc-card-step-num">STEP 07</div>
+          <div class="proc-card-top-area">
+            <div class="proc-card-title">분석 &amp; 피드백</div>
+            <div class="proc-card-en">Feedback</div>
+          </div>
           <div class="proc-card-divider"></div>
           <div class="proc-card-desc">캠페인 성과를 공동으로 분석하고 KPI 달성률과 전환 지표를 종합한 결과 보고서를 제공합니다.</div>
         </div>
