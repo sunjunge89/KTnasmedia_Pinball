@@ -4263,6 +4263,68 @@
         background: #fff;
         color: #222;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+        transition: border-color .2s, box-shadow .2s, background .2s, color .2s, transform .15s;
+        user-select: none;
+      }
+
+      .proc-legend-pill:hover {
+        border-color: #bbb;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .proc-legend-pill.pill-active.nas-pill {
+        border-color: #0A0A0A;
+        background: #0A0A0A;
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+      }
+
+      .proc-legend-pill.pill-active.pb-pill {
+        border-color: #FF9900;
+        background: linear-gradient(90deg, #FF9900 0%, #E8230A 100%);
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(255,153,0,0.35);
+      }
+
+      .proc-legend-pill.pill-active .dot {
+        background: #fff !important;
+      }
+
+      /* ── CARD FILTER STATES ── */
+      .proc-card {
+        transition: transform .38s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    box-shadow .38s ease,
+                    border-color .25s ease,
+                    opacity .3s ease,
+                    filter .3s ease;
+      }
+
+      .proc-card.card-dimmed {
+        opacity: 0.28;
+        filter: grayscale(40%);
+        transform: scale(0.94) !important;
+        box-shadow: none !important;
+        pointer-events: none;
+      }
+
+      .proc-card.card-highlighted {
+        transform: translateY(-10px) scale(1.04) !important;
+        z-index: 10;
+        position: relative;
+      }
+
+      .nas-card.card-highlighted {
+        box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22) !important;
+      }
+
+      .pb-card.card-highlighted {
+        box-shadow: 0 28px 60px rgba(255, 153, 0, 0.40) !important;
+      }
+
+      .both-card.card-highlighted {
+        box-shadow: 0 28px 60px rgba(0, 0, 0, 0.16) !important;
       }
 
       .proc-legend-pill .dot {
@@ -4637,10 +4699,10 @@
 
       <!-- Legend -->
       <div class="proc-legend">
-        <div class="proc-legend-pill nas-pill">
+        <div class="proc-legend-pill nas-pill" onclick="filterProcCards('nas')">
           <span class="dot"></span>나스미디어 담당
         </div>
-        <div class="proc-legend-pill pb-pill">
+        <div class="proc-legend-pill pb-pill" onclick="filterProcCards('pb')">
           <span class="dot"></span>핀볼 담당
         </div>
       </div>
@@ -5163,6 +5225,50 @@
       t.textContent = msg; t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3500);
     }
+    /* ── PROCESS CARD FILTER ── */
+    let activeProcFilter = null;
+
+    function filterProcCards(type) {
+      const nasPill = document.querySelector('.proc-legend-pill.nas-pill');
+      const pbPill  = document.querySelector('.proc-legend-pill.pb-pill');
+      const cards   = document.querySelectorAll('.proc-card');
+
+      // 같은 버튼 재클릭 → 초기화
+      if (activeProcFilter === type) {
+        activeProcFilter = null;
+        nasPill.classList.remove('pill-active');
+        pbPill.classList.remove('pill-active');
+        cards.forEach(c => {
+          c.classList.remove('card-highlighted', 'card-dimmed');
+        });
+        return;
+      }
+
+      activeProcFilter = type;
+
+      // pill 상태
+      nasPill.classList.toggle('pill-active', type === 'nas');
+      pbPill.classList.toggle('pill-active',  type === 'pb');
+
+      cards.forEach(c => {
+        const isNas  = c.classList.contains('nas-card');
+        const isPb   = c.classList.contains('pb-card');
+        const isBoth = c.classList.contains('both-card');
+
+        let matched = false;
+        if (type === 'nas') matched = isNas || isBoth;
+        if (type === 'pb')  matched = isPb  || isBoth;
+
+        if (matched) {
+          c.classList.add('card-highlighted');
+          c.classList.remove('card-dimmed');
+        } else {
+          c.classList.add('card-dimmed');
+          c.classList.remove('card-highlighted');
+        }
+      });
+    }
+
   </script>
 
 
