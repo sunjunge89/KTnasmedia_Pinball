@@ -3787,7 +3787,7 @@
       <h1 class="hero-title">Creator Partnership<br>Boost Ads</h1>
       <p class="hero-sub hero-sub-ko">KT Nasmedia의 Google Ads 운영 전문성과<br>PINBALL의 글로벌 크리에이터 네트워크가 만나 크리에이터 파트너십 광고성과를
         확장합니다.</p>
-      <button class="btn-download" onclick="handleDownload()">Download Document</button>
+      <button class="btn-download" onclick="handleDownload()">View Document</button>
     </div>
   </section>
 
@@ -5213,12 +5213,10 @@
     }
 
     /* ── Download handler ── */
-    const DOCUMENT_URL = '';
+    const DOCUMENT_URL = 'https://drive.google.com/file/d/1-nvpKyrrB0Bgr6KBkze2zNQTMfTdMznw/view?usp=drive_link';
     function handleDownload() {
       if (!DOCUMENT_URL) { showToast('문서 파일을 DOCUMENT_URL 변수에 연결해 주세요.'); return; }
-      const a = document.createElement('a');
-      a.href = DOCUMENT_URL; a.download = DOCUMENT_URL.split('/').pop();
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      window.open(DOCUMENT_URL, '_blank', 'noopener');
     }
     function showToast(msg) {
       const t = document.getElementById('toast');
